@@ -1,4 +1,6 @@
 import ProjectCard from '../../components/project/ProjectCard';
+import { projects } from '../../data/parsers/project.parser';
+
 
 function Projects() {
     return (
@@ -10,11 +12,18 @@ function Projects() {
             </div>
 
             <div className="project-grid">
-                <ProjectCard />
+
+                {projects.map(project => (
+                    <ProjectCard
+                        key={project.id}
+                        project={project}
+                    />
+                ))}
+                {/* <ProjectCard />
 
                 <ProjectCard />
 
-                <ProjectCard />
+                <ProjectCard /> */}
             </div>
         </section>
     );

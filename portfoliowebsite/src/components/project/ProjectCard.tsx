@@ -1,37 +1,25 @@
-// components/project/ProjectCard.tsx
+import { type Project } from "../../data/schemas/project.schema";
 
-function ProjectCard() {
+
+type Props = {
+    project: Project;
+};
+
+function ProjectCard({ project }: Props) {
     return (
         <article className="project-card">
 
-            <div className="thumbnail">
-                THUMBNAIL
+            <h2>{project.title}</h2>
+
+            <p>{project.description}</p>
+
+            <div>
+                {project.tags.map(tag => (
+                    <span key={tag}>
+                        {tag}
+                    </span>
+                ))}
             </div>
-
-            <div className="project-content">
-
-                <span>
-                    React Native
-                </span>
-
-                <h3>
-                    TravelBUDDY
-                </h3>
-
-                <p>
-                    여행 일정 및 협업 서비스
-                </p>
-
-                <div className="tags">
-
-                    <span>#Map</span>
-                    <span>#Chat</span>
-                    <span>#Schedule</span>
-
-                </div>
-
-            </div>
-
         </article>
     );
 }

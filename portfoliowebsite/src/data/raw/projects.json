@@ -1,0 +1,14 @@
+[
+    {
+        "id": "travelbuddy",
+        "title": "TravelBUDDY",
+        "description": "여행 계획 협업 앱",
+        "thumbnail": "travelbuddy.webp",
+        "tags": [
+            "React Native",
+            "Firebase"
+        ],
+        "github": "https://github.com/example",
+        "featured": true
+    }
+]
