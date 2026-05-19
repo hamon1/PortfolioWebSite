@@ -1,8 +1,9 @@
 function DevLog() {
     return (
-        <>
-        </>
-        );
-    }
-    
-    export default DevLog;
+        <section id="devlog">
+            <span>Devlog</span>
+        </section>
+    );
+}
+
+export default DevLog;

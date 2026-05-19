@@ -1,8 +1,16 @@
+import { Link } from "react-router-dom";
 import CommissionCard from "../../components/commission/CommissionCard";
 
 function Commission() {
     return (
         <section id="commission-section">
+
+            <div className="back-navigation">
+
+                <Link to="/">
+                    back to Portfolio
+                </Link>
+            </div>
 
             <div className="section-header">
 

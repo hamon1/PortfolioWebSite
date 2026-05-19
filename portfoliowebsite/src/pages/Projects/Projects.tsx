@@ -4,7 +4,7 @@ import { projects } from '../../data/parsers/project.parser';
 
 function Projects() {
     return (
-        <section id="featured-projects">
+        <section id="projects">
             <div className="section-header">
                 <h2>Featured Projects</h2>
 
