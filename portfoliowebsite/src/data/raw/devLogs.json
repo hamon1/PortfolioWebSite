@@ -1,0 +1,15 @@
+[
+    {
+        "id": "map-performance",
+        "title": "지도 렌더링 성능 개선",
+        "date": "2025-02-10",
+        "problem": "마커가 많아질수록 렌더링 속도가 저하됨",
+        "cause": "불필요한 re-render 발생",
+        "solution": "React.memo와 marker virtualization 적용",
+        "result": "렌더링 시간 약 40% 감소",
+        "tags": [
+            "React",
+            "Optimization"
+        ]
+    }
+]
