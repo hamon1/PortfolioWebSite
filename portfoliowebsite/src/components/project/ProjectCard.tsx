@@ -3,88 +3,234 @@ import { type Project } from "../../data/schemas/project.schema";
 
 type Props = {
     project: Project;
+
+    onExpand: () => void;
 };
 
-function ProjectCard({ project }: Props) {
+function ProjectCard({ project, onExpand }: Props) {
     return (
-        // <article className="project-card">
+        // <section className="project-section">
+        //     {/* Hero */}
+        //     <div className="project-hero">
+        //         <img
+        //             src={project.thumbnail}
+        //             alt={project.title}
+        //             className="project-thumbnail"
+        //         />
 
-        //     <h2>{project.title}</h2>
+        //         <div className="project-summary">
+        //             <div className="project-badge">
+        //                 {project.featured && <span>Featured</span>}
+        //             </div>
 
-        //     <p>{project.description}</p>
+        //             <h2>{project.title}</h2>
 
-        //     <div>   
-        //         <span> img </span>
+        //             <p className="project-short-description">
+        //                 {project.shortDescription}
+        //             </p>
+
+        //             <p className="project-description">
+        //                 {project.description}
+        //             </p>
+
+        //             <div className="project-meta">
+        //                 <span>{project.period}</span>
+        //                 <span>{project.teamSize}</span>
+        //                 <span>{project.role}</span>
+        //             </div>
+
+        //             <div className="tech-stack">
+        //                 {project.techStack.map((tech) => (
+        //                     <span
+        //                         key={tech}
+        //                         className="tech-chip"
+        //                     >
+        //                         {tech}
+        //                     </span>
+        //                 ))}
+        //             </div>
+
+        //             <div className="project-links">
+        //                 {project.githubUrl && (
+        //                     <a
+        //                         href={project.githubUrl}
+        //                         target="_blank"
+        //                         rel="noreferrer"
+        //                     >
+        //                         GitHub
+        //                     </a>
+        //                 )}
+
+        //                 {project.deployUrl && (
+        //                     <a
+        //                         href={project.deployUrl}
+        //                         target="_blank"
+        //                         rel="noreferrer"
+        //                     >
+        //                         Demo
+        //                     </a>
+        //                 )}
+        //             </div>
+        //         </div>
         //     </div>
 
-        //     <div>
-        //         {project.tags.map(tag => (
-        //             <span key={tag}>
-        //                 {tag}
-        //             </span>
-        //         ))}
+        //     {/* Features */}
+        //     <div className="project-block">
+        //         <h3>Features</h3>
+
+        //         <div className="feature-grid">
+        //             {project.features.map((feature) => (
+        //                 <div
+        //                     key={feature.title}
+        //                     className="feature-card"
+        //                 >
+        //                     <h4>{feature.title}</h4>
+
+        //                     <p>{feature.description}</p>
+        //                 </div>
+        //             ))}
+        //         </div>
         //     </div>
-        // </article>
-        <section className="project-card featured">
 
-            <div className="project-thumbnail">
-                {/* <img src="./assets/travelbuddy.webp" alt="TravelBUDDY 썸네일"> */}
-            </div>
+        //     {/* Demo */}
+        //     <div className="project-block">
+        //         <h3>Demo</h3>
 
+        //         <div className="demo-grid">
+        //             {project.demos.map((demo) => (
+        //                 <div
+        //                     key={demo.src}
+        //                     className="demo-card"
+        //                 >
+        //                     {(demo.type === 'image' ||
+        //                         demo.type === 'gif') && (
+        //                             <img
+        //                                 src={demo.src}
+        //                                 alt={demo.title}
+        //                             />
+        //                         )}
 
-            <div className="project-content">
+        //                     {demo.type === 'video' && (
+        //                         <video
+        //                             controls
+        //                             src={demo.src}
+        //                         />
+        //                     )}
 
+        //                     <div className="demo-content">
+        //                         <h4>{demo.title}</h4>
 
-                <div className="project-header">
-                    <h3 className="project-title">
-                        {project.title}
-                    </h3>
+        //                         {demo.description && (
+        //                             <p>{demo.description}</p>
+        //                         )}
+        //                     </div>
+        //                 </div>
+        //             ))}
+        //         </div>
+        //     </div>
 
-                    <span className="project-badge">
-                        {project.featured}
-                    </span>
-                </div>
+        //     {/* Trouble Shooting */}
+        //     <div className="project-block">
+        //         <h3>Trouble Shooting</h3>
 
+        //         <div className="trouble-list">
+        //             {project.troubles.map((trouble) => (
+        //                 <div
+        //                     key={trouble.problem}
+        //                     className="trouble-card"
+        //                 >
+        //                     <div>
+        //                         <strong>Problem</strong>
+        //                         <p>{trouble.problem}</p>
+        //                     </div>
 
-                <p className="project-description">
-                    {project.description}
-                </p>
+        //                     <div>
+        //                         <strong>Cause</strong>
+        //                         <p>{trouble.cause}</p>
+        //                     </div>
 
-                <p> {project.period} </p>
+        //                     <div>
+        //                         <strong>Solution</strong>
+        //                         <p>{trouble.solution}</p>
+        //                     </div>
 
-                <p> {project.role} </p>
+        //                     {trouble.result && (
+        //                         <div>
+        //                             <strong>Result</strong>
+        //                             <p>{trouble.result}</p>
+        //                         </div>
+        //                     )}
+        //                 </div>
+        //             ))}
+        //         </div>
+        //     </div>
 
-                <p> {project.teamSize} </p>
+        //     {/* DevLog */}
+        //     <div className="project-block">
+        //         <div className="block-header">
+        //             <h3>DevLog</h3>
 
-                <div>
-                    {project.tags.map(tag => (
-                        <span key={tag}>
-                            {tag} 
-                        </span>
-                    ))}
-                </div>
+        //             <button>
+        //                 전체 보기
+        //             </button>
+        //         </div>
 
+        //         <div className="devlog-list">
+        //             {project.devLogs.map((log) => (
+        //                 <article
+        //                     key={`${log.date}-${log.title}`}
+        //                     className="devlog-card"
+        //                 >
+        //                     <span className="devlog-date">
+        //                         {log.date}
+        //                     </span>
 
-                <div className="project-actions">
-                    <a
-                        href="https://github.com/example"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link github"
-                    >
-                        GitHub
-                    </a>
+        //                     <h4>{log.title}</h4>
 
-                    <a
-                        href="#"
-                        className="project-link demo"
-                    >
-                        Live Demo
-                    </a>
-                </div>
+        //                     <p className="devlog-summary">
+        //                         {log.summary}
+        //                     </p>
 
-            </div>
-        </section>
+        //                     <div className="tag-list">
+        //                         {log.tags.map((tag) => (
+        //                             <span
+        //                                 key={tag}
+        //                                 className="tag"
+        //                             >
+        //                                 #{tag}
+        //                             </span>
+        //                         ))}
+        //                     </div>
+        //                 </article>
+        //             ))}
+        //         </div>
+        //     </div>
+
+        //     {/* Retrospective */}
+        //     {project.retrospective && (
+        //         <div className="project-block">
+        //             <h3>Retrospective</h3>
+
+        //             <p className="retrospective">
+        //                 {project.retrospective}
+        //             </p>
+        //         </div>
+        //     )}
+        // </section>
+        <article className="project-card">
+            <img
+                src={project.thumbnail}
+                alt={project.title}
+            />
+
+            <h3>{project.title}</h3>
+
+            <p>{project.description}</p>
+
+            <button onClick={onExpand}>
+                전체 보기
+            </button>
+        </article>
     );
 }
 

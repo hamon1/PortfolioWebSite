@@ -1,4 +1,9 @@
-import rawProjects from '../raw/projects.json';
+import rawTravelBuddy from '../raw/travelbuddy.json';
+import rawFocat from '../raw/focat.json';
+
 import { ProjectSchema } from '../schemas/project.schema';
 
-export const projects = ProjectSchema.array().parse(rawProjects);
+export const projects = [
+    ProjectSchema.parse(rawTravelBuddy),
+    ProjectSchema.parse(rawFocat)
+]

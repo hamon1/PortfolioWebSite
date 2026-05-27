@@ -1,7 +1,7 @@
 import About from "../About/About";
 import Projects from "../Projects/Projects";
-import Demo from "../Demo/Demo";
-import DevLog from "../DevLog/DevLog";
+// import Demo from "../Demo/Demo";
+// import DevLog from "../DevLog/DevLog";
 
 function Home() {
 return (
@@ -10,9 +10,9 @@ return (
 
         <Projects/>
 
-        <Demo/>
+        {/* <Demo/> */}
 
-        <DevLog/>
+        {/* <DevLog/> */}
     </div>
     );
 }

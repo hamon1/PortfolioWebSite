@@ -1,0 +1,125 @@
+{
+    "id": "focus-timer-electron",
+    "title": "Focus Timer",
+    "shortDescription": "Electron 기반 데스크톱 집중 타이머",
+    "description": "집중 시간 관리와 몰입 경험 향상을 목표로 제작한 Electron 기반 데스크톱 타이머 애플리케이션",
+    "thumbnail": "/images/projects/focus-timer/thumb.webp",
+    "period": "2026.03 ~ 2026.04",
+    "teamSize": "1인",
+    "role": "Frontend / Desktop App",
+    "techStack": [
+        "Electron",
+        "JavaScript",
+        "HTML",
+        "CSS"
+    ],
+    "githubUrl": "https://github.com/example/focus-timer",
+    "deployUrl": "https://focus-timer.app",
+    "features": [
+        {
+            "title": "집중 타이머 시스템",
+            "description": "Start / Pause / Stop / Reset 상태 기반 타이머 제어"
+        },
+        {
+            "title": "3단계 UI 모드",
+            "description": "Mini / Timer / Full 모드 전환 지원"
+        },
+        {
+            "title": "목표 및 기록 관리",
+            "description": "집중 목표 생성과 세션 기록 저장"
+        },
+        {
+            "title": "투명도 설정",
+            "description": "CSS 변수 기반 실시간 opacity 조절"
+        },
+        {
+            "title": "밈 팝업 인터랙션",
+            "description": "이벤트 기반 별도 오버레이 창 출력"
+        }
+    ],
+    "demos": [
+        {
+            "title": "타이머 메인 화면",
+            "type": "image",
+            "src": "/images/projects/focus-timer/demo-main.webp"
+        },
+        {
+            "title": "미니 모드 시연",
+            "type": "gif",
+            "src": "/images/projects/focus-timer/mini-mode.gif"
+        },
+        {
+            "title": "밈 팝업 인터랙션",
+            "type": "gif",
+            "src": "/images/projects/focus-timer/meme-popup.gif"
+        }
+    ],
+    "devLogs": [
+        {
+            "date": "2026-04-10",
+            "title": "IPC 기반 구조 개선",
+            "summary": "Renderer와 Main 책임 분리",
+            "content": "contextBridge를 통해 Renderer에 필요한 API만 안전하게 노출",
+            "tags": [
+                "electron",
+                "ipc",
+                "architecture"
+            ]
+        },
+        {
+            "date": "2026-04-18",
+            "title": "UI 모드 전환 구조 개선",
+            "summary": "CSS class 기반 상태 관리 적용",
+            "content": "mini / timer / full 상태를 body class로 제어하여 UI와 로직을 분리",
+            "tags": [
+                "css",
+                "ui",
+                "state"
+            ]
+        },
+        {
+            "date": "2026-04-27",
+            "title": "미니 모드 기능 확장",
+            "summary": "미니모드에서도 타이머 조작 가능",
+            "content": "사용자가 작은 창 상태에서도 Start / Pause 기능을 사용할 수 있도록 개선",
+            "tags": [
+                "ux",
+                "electron"
+            ]
+        }
+    ],
+    "troubles": [
+        {
+            "problem": "scale 기반 UI 축소 시 위치가 어긋남",
+            "cause": "transform은 layout flow에 영향을 주지 않음",
+            "solution": "width/height 기반 레이아웃 제어 방식으로 변경",
+            "result": "중앙 정렬 및 반응형 동작 안정화"
+        },
+        {
+            "problem": "Renderer에서 Electron API 직접 접근 불가",
+            "cause": "contextIsolation 활성화 환경",
+            "solution": "preload의 contextBridge를 통해 안전한 IPC API 제공",
+            "result": "보안성과 구조 분리를 동시에 확보"
+        },
+        {
+            "problem": "DOM 기반 팝업이 창 영역 밖으로 표현되지 않음",
+            "cause": "브라우저 렌더링 영역 제한",
+            "solution": "별도 BrowserWindow 기반 오버레이 팝업 구현",
+            "result": "OS 레벨 인터랙션 효과 구현"
+        }
+    ],
+    "retrospective": "Electron의 Main / Renderer / Preload 구조와 IPC 기반 아키텍처를 직접 설계하며 데스크톱 환경의 UI/UX와 상태 관리 흐름을 깊게 이해하게 됨",
+    "updates": [
+        {
+            "version": "v1.0.1",
+            "date": "2026-04-20",
+            "content": "화면 opacity 조절 슬라이더 기능 추가"
+        },
+        {
+            "version": "v1.0.2",
+            "date": "2026-04-27",
+            "content": "미니모드에서 타이머 조작 기능 추가"
+        }
+    ],
+    "featured": true
+}
