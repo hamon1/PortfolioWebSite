@@ -1,5 +1,7 @@
 import { type Project } from "../../data/schemas/project.schema";
 
+import '../../styles/expandedProject.css';
+
 interface Props {
     project: Project;
 

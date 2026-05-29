@@ -16,7 +16,7 @@ function Header() {
 
     return (
         <header>
-
+{/* 
             <button
                 onClick={() =>
                     moveSection('projects')
@@ -47,7 +47,7 @@ function Header() {
                 }
             >
                 About
-            </button>
+            </button> */}
 
             <Link to="/commission">
                 Commission

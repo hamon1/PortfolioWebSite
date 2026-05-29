@@ -5,32 +5,9 @@ import ExpandedProject from '../../components/project/ExpandedProject';
 
 import { projects } from '../../data/parsers/project.parser';
 
+import '../../styles/project.css';
 
 function Projects() {
-    //     return (
-    //         <section id="projects">
-    //             <div className="section-header">
-    //                 <h2>Featured Projects</h2>
-
-    //                 <button>전체 보기</button>
-    //             </div>
-
-    //             <div className="project-grid">
-
-    //                 {projects.map(project => (
-    //                     <ProjectCard
-    //                         key={project.id}
-    //                         project={project}
-    //                     />
-    //                 ))}
-    //                 {/* <ProjectCard />
-
-    //                 <ProjectCard />
-
-    //                 <ProjectCard /> */}
-    //             </div>
-    //         </section>
-    //     );
     const [selectedProjectId, setSelectedProjectId] =
         useState<string | null>(null);
 
@@ -40,16 +17,18 @@ function Projects() {
 
     return (
         <section>
-            <div className="project-grid">
-                {projects.map((project) => (
-                    <ProjectCard
-                        key={project.id}
-                        project={project}
-                        onExpand={() =>
-                            setSelectedProjectId(project.id)
-                        }
-                    />
-                ))}
+            <div className='project-grid-wrapper'>
+                <div className="project-grid">
+                    {projects.map((project) => (
+                        <ProjectCard
+                            key={project.id}
+                            project={project}
+                            onExpand={() =>
+                                setSelectedProjectId(project.id)
+                            }
+                        />
+                    ))}
+                </div>
             </div>
 
             {selectedProject && (

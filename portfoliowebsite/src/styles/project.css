@@ -1,0 +1,47 @@
+/* 전체 section */
+section {
+    padding: 32px 24px;
+
+    background: #0d1117;
+
+    overflow: hidden;
+}
+
+/* project-grid만 가로 스크롤 */
+.project-grid-wrapper {
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    width: 100%;
+}
+
+/* 카드 영역 */
+.project-grid {
+    display: flex;
+
+    flex-direction: row;
+
+    gap: 20px;
+
+    overflow-x: auto;
+
+    width: max-content;
+
+    padding-bottom: 8px;
+}
+
+/* 스크롤바 */
+.project-grid::-webkit-scrollbar {
+    height: 4px;
+}
+
+.project-grid::-webkit-scrollbar-thumb {
+    background: #2f81f7;
+
+    border-radius: 999px;
+}
+
+.project-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
