@@ -1,0 +1,121 @@
+{
+    "id": "feathertales",
+    "title": "FeatherTales",
+    "shortDescription": "공간 기반 소셜 커뮤니티 플랫폼",
+    "description": "감정 기록과 아바타 커스터마이징을 결합한 공간 기반 인터랙션 플랫폼",
+    "thumbnail": "/images/projects/feathertales/thumb.webp",
+    "period": "2025.04 ~ 2025.07",
+    "teamSize": "2인",
+    "role": "Frontend / FullStack",
+    "techStack": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express",
+        "JavaScript"
+    ],
+    "githubUrl": "https://github.com/example/feathertales",
+    "deployUrl": "https://feathertales.app",
+    "features": [
+        {
+            "title": "인터랙티브 홈 환경",
+            "description": "좌표 기반 아바타 이동 및 공간 인터랙션 지원"
+        },
+        {
+            "title": "아바타 커스터마이징",
+            "description": "다양한 옵션 조합을 통한 사용자 개성 표현"
+        },
+        {
+            "title": "책방 시스템",
+            "description": "글 작성, 분류, Drag & Drop 기반 정렬 기능 제공"
+        },
+        {
+            "title": "친구 시스템",
+            "description": "검색, 요청, 수락 기반 사용자 관계 관리"
+        },
+        {
+            "title": "감정 기록 공간",
+            "description": "개인 기록 중심의 사용자 공간 구성"
+        }
+    ],
+    "demos": [
+        {
+            "title": "메인 인터랙션 화면",
+            "type": "image",
+            "src": "/images/projects/feathertales/demo-home.webp"
+        },
+        {
+            "title": "아바타 이동 시연",
+            "type": "gif",
+            "src": "/images/projects/feathertales/avatar-move.gif"
+        },
+        {
+            "title": "책방 Drag & Drop",
+            "type": "gif",
+            "src": "/images/projects/feathertales/bookshelf-dnd.gif"
+        }
+    ],
+    "devLogs": [
+        {
+            "date": "2025-05-11",
+            "title": "좌표 기반 이동 구조 구현",
+            "summary": "클릭 위치 기반 아바타 이동 처리",
+            "content": "마우스 클릭 좌표를 기준으로 캐릭터 위치 상태를 갱신하고 이동 애니메이션을 연결",
+            "tags": [
+                "react",
+                "interaction",
+                "ui"
+            ]
+        },
+        {
+            "date": "2025-05-26",
+            "title": "아바타 상태 구조 개선",
+            "summary": "커스터마이징 상태 데이터 정리",
+            "content": "아바타 옵션 데이터를 JSON 기반 구조로 통합하여 유지보수성과 확장성을 개선",
+            "tags": [
+                "state",
+                "avatar",
+                "mongodb"
+            ]
+        },
+        {
+            "date": "2025-06-08",
+            "title": "책방 Drag & Drop 구현",
+            "summary": "사용자 경험 중심 인터랙션 추가",
+            "content": "Drag 이벤트 기반 순서 변경 후 DB 순서를 동기화하는 구조 구현",
+            "tags": [
+                "dragdrop",
+                "crud",
+                "ux"
+            ]
+        }
+    ],
+    "troubles": [
+        {
+            "problem": "인터랙션 요소가 많아질수록 상태 관리 복잡도가 증가",
+            "cause": "컴포넌트 간 상태 의존성과 props 전달 증가",
+            "solution": "공간 상태와 사용자 상태를 분리하고 공통 상태를 상위 레벨에서 관리",
+            "result": "컴포넌트 책임이 명확해지고 유지보수성 향상"
+        },
+        {
+            "problem": "Drag & Drop 이후 UI와 DB 순서 불일치 발생",
+            "cause": "프론트 상태 변경과 서버 저장 타이밍 차이",
+            "solution": "순서 변경 직후 optimistic update 후 서버 동기화 적용",
+            "result": "사용자 경험과 데이터 일관성 개선"
+        },
+        {
+            "problem": "오브젝트 인터랙션 시 이벤트 중복 발생",
+            "cause": "거리 계산과 이벤트 리스너가 동시에 중첩 실행됨",
+            "solution": "interaction 범위 체크와 상태 기반 debounce 처리 적용",
+            "result": "불필요한 이벤트 호출 감소"
+        }
+    ],
+    "retrospective": "공간 기반 UX와 상태 중심 인터랙션 설계를 직접 구현하며 사용자 경험 중심 프론트엔드 구조와 데이터 흐름 설계를 깊게 경험함",
+    "scalability": [
+        "공간 인테리어 시스템 확장",
+        "WebSocket 기반 실시간 방문 기능",
+        "실시간 채팅 및 상태 동기화",
+        "멀티 유저 인터랙션 구조 확장"
+    ],
+    "featured": true
+}
