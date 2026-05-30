@@ -26,7 +26,7 @@ export const ProjectSchema = z.object({
 
     githubUrl: z.string().url().optional(),
 
-    deployUrl: z.string().url().optional(),
+    deployUrl: z.string().url().or(z.literal("")),
 
     features: z.array(FeatureSchema),
 

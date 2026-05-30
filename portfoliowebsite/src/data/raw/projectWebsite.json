@@ -1,0 +1,104 @@
+{
+    "id": "portfolio-website",
+    "title": "Developer Portfolio Website",
+    "shortDescription": "프로젝트 및 커미션 아카이브 포트폴리오",
+    "description": "React와 TypeScript 기반으로 제작한 개인 포트폴리오 웹사이트. 프로젝트, 커미션, 개발 기록 및 트러블슈팅 경험을 한 곳에서 확인할 수 있도록 설계하였다.",
+    "thumbnail": "/images/projects/portfolio/thumb.webp",
+    "period": "2026.05 ~ 진행중",
+    "teamSize": "1인",
+    "role": "Frontend",
+    "techStack": [
+        "React",
+        "TypeScript",
+        "Zod",
+        "React Router",
+        "CSS"
+    ],
+    "githubUrl": "https://github.com/your-id/portfolio-website",
+    "deployUrl": "",
+    "features": [
+        {
+            "title": "프로젝트 아카이브",
+            "description": "프로젝트 목록 및 상세 정보를 카드 형태로 제공"
+        },
+        {
+            "title": "프로젝트 상세 보기",
+            "description": "기능, 데모, 개발 기록, 트러블슈팅 및 회고를 확인 가능"
+        },
+        {
+            "title": "커미션 갤러리",
+            "description": "작업한 커미션을 카테고리별로 정리하여 제공"
+        },
+        {
+            "title": "JSON 기반 콘텐츠 관리",
+            "description": "프로젝트 및 커미션 데이터를 JSON으로 관리"
+        },
+        {
+            "title": "Zod 데이터 검증",
+            "description": "런타임 데이터 검증을 통해 데이터 무결성 확보"
+        }
+    ],
+    "demos": [
+        {
+            "title": "프로젝트 목록 화면",
+            "type": "image",
+            "src": "/images/projects/portfolio/project-list.webp"
+        },
+        {
+            "title": "프로젝트 상세 화면",
+            "type": "image",
+            "src": "/images/projects/portfolio/project-detail.webp"
+        },
+        {
+            "title": "커미션 아카이브",
+            "type": "image",
+            "src": "/images/projects/portfolio/commission.webp"
+        }
+    ],
+    "devLogs": [
+        {
+            "date": "2026-05-19",
+            "title": "프로젝트 데이터 구조 설계",
+            "summary": "JSON + Zod 기반 데이터 모델 구성",
+            "content": "프로젝트, 커미션, 데모, 트러블슈팅 데이터를 JSON으로 관리하고 Zod를 이용해 검증하는 구조를 설계",
+            "tags": [
+                "typescript",
+                "zod",
+                "json"
+            ]
+        },
+        {
+            "date": "2026-05-26",
+            "title": "프로젝트 상세 레이아웃 개선",
+            "summary": "카드 영역과 상세 영역 분리",
+            "content": "프로젝트 목록은 가로 스크롤, 상세 영역은 독립적으로 표시하도록 구조 개선",
+            "tags": [
+                "react",
+                "layout",
+                "css"
+            ]
+        }
+    ],
+    "troubles": [
+        {
+            "problem": "프로젝트 상세 영역이 카드와 함께 가로 스크롤됨",
+            "cause": "상세 컴포넌트가 프로젝트 카드 컨테이너 내부에 위치",
+            "solution": "ProjectGrid와 ExpandedProject를 분리하여 독립 렌더링",
+            "result": "상세 영역 고정 및 UX 개선"
+        },
+        {
+            "problem": "정적 데이터 증가에 따른 타입 불일치 가능성",
+            "cause": "JSON 데이터 수동 관리",
+            "solution": "Zod 스키마를 활용한 데이터 검증 적용",
+            "result": "데이터 무결성 확보 및 유지보수성 향상"
+        },
+        {
+            "problem": "프로젝트별 상세 페이지 확장성 부족",
+            "cause": "프로젝트 정보가 컴포넌트 내부에 하드코딩",
+            "solution": "데이터 중심 렌더링 구조로 전환",
+            "result": "새 프로젝트 추가 시 데이터만 작성하면 자동 반영"
+        }
+    ],
+    "retrospective": "프로젝트 데이터를 중심으로 UI를 구성하는 구조를 설계하며 React 컴포넌트 설계, TypeScript 타입 관리, Zod 기반 데이터 검증 경험을 쌓을 수 있었다. 향후 검색, 필터링, 다크 모드 및 애니메이션 기능을 추가하여 완성도를 높일 계획이다.",
+    "featured": true
+}
