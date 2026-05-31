@@ -1,7 +1,7 @@
 export interface GithubCommit {
     sha: string;
 
-    commits: {
+    commit: {
         message: string;
 
         author: {

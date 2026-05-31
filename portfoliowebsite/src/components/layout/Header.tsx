@@ -2,17 +2,17 @@ import { Link } from 'react-router-dom';
 
 function Header() {
 
-    const moveSection = (
-        id: string
-    ) => {
+    // const moveSection = (
+    //     id: string
+    // ) => {
 
-        const section =
-            document.getElementById(id);
+    //     const section =
+    //         document.getElementById(id);
 
-        section?.scrollIntoView({
-            behavior: 'smooth',
-        });
-    };
+    //     section?.scrollIntoView({
+    //         behavior: 'smooth',
+    //     });
+    // };
 
     return (
         <header>

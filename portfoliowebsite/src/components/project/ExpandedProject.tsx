@@ -214,12 +214,12 @@ function ExpandedProject({
                         >
                             <span>
                                 {new Date(
-                                    commit.commits.author.date
+                                    commit.commit?.author.date
                                 ).toLocaleDateString()}
                             </span>
 
                             <p>
-                                {commit.commits.message}
+                                {commit.commit?.message}
                             </p>
                         </div>
                     ))}
