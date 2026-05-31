@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import CommissionCard from "../../components/commission/CommissionCard";
 
+import { commissions } from "../../data/parsers/commission.parser";
+
 function Commission() {
     return (
         <section id="commission-section">
@@ -34,12 +36,12 @@ function Commission() {
 
             <div className="commission-grid">
 
-                <CommissionCard />
-
-                <CommissionCard />
-
-                <CommissionCard />
-
+                {commissions.map((commission) => (
+                    <CommissionCard
+                    key = {commission.id}
+                    commission={commission}
+                    />
+                ))}
             </div>
 
         </section>

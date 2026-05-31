@@ -1,9 +1,15 @@
-function CommissionCard() {
+import { type Commission } from "../../data/schemas/commission.schema";
+
+type Props = {
+    commission: Commission
+}
+
+function CommissionCard({ commission }: Props) {
     return (
         <article className="commission-card">
 
             <div className="commission-thumbnail">
-                IMAGE
+                <img src={commission.image} alt={commission.id} width={400}/>
             </div>
 
             <div className="commission-content">
@@ -23,21 +29,19 @@ function CommissionCard() {
                 <div className="commission-meta">
 
                     <span>
-                        2026.05
+                        {commission.year}
                     </span>
 
                     <span>
-                        Full Render
+                        {commission.type}
                     </span>
 
                 </div>
 
                 <div className="commission-tags">
-
-                    <span>#Illustration</span>
-                    <span>#Character</span>
-                    <span>#Fantasy</span>
-
+                    {commission.tags.map((tag) => (
+                        <div>{tag}</div>
+                    ))}
                 </div>
 
                 <div className="commission-actions">

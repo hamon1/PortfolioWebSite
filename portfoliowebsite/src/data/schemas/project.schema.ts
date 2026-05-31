@@ -10,6 +10,8 @@ export const ProjectSchema = z.object({
 
     title: z.string(),
 
+    githubRepo: z.string(),
+
     shortDescription: z.string(),
 
     description: z.string(),

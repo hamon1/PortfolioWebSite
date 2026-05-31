@@ -1,6 +1,7 @@
 {
     "id": "travelbuddy",
     "title": "TravelBUDDY",
+    "githubRepo": "hamon1/TRAVEL",
     "shortDescription": "여행 계획 협업 앱",
     "description": "여행 일정을 공유하고 함께 계획할 수 있는 협업 서비스",
     "thumbnail": "/images/projects/travelbuddy/thumb.webp",

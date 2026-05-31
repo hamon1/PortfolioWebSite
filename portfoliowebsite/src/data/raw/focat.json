@@ -1,6 +1,7 @@
 {
     "id": "focus-timer-electron",
     "title": "Focus Timer",
+    "githubRepo": "hamon1/Focus",
     "shortDescription": "Electron 기반 데스크톱 집중 타이머",
     "description": "집중 시간 관리와 몰입 경험 향상을 목표로 제작한 Electron 기반 데스크톱 타이머 애플리케이션",
     "thumbnail": "/images/projects/focus-timer/thumb.webp",

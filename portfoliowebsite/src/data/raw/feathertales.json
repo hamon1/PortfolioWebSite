@@ -1,6 +1,7 @@
 {
     "id": "feathertales",
     "title": "FeatherTales",
+    "githubRepo": "hamon1/FeatherTales",
     "shortDescription": "공간 기반 소셜 커뮤니티 플랫폼",
     "description": "감정 기록과 아바타 커스터마이징을 결합한 공간 기반 인터랙션 플랫폼",
     "thumbnail": "/images/projects/feathertales/thumb.webp",

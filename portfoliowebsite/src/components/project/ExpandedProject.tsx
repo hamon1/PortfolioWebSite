@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { type Project } from "../../data/schemas/project.schema";
+import { useGithubCommits } from "../../hooks/useGithubCommits";
 
 import '../../styles/expandedProject.css';
 
@@ -12,6 +14,14 @@ function ExpandedProject({
     project,
     onClose,
 }: Props) {
+
+    const commits = useGithubCommits(
+        project.githubRepo
+    )
+
+    const [showAllCommits, setShowAllCommits] =
+    useState(false);
+
     return (
         <section className="expanded-project">
             <button onClick={onClose}>
@@ -177,38 +187,41 @@ function ExpandedProject({
                 <div className="block-header">
                     <h3>DevLog</h3>
 
-                    <button>
-                        전체 보기
-                    </button>
+                    {commits.length > 3 && (
+                        <button
+                            onClick={() =>
+                                setShowAllCommits(
+                                    (prev) => !prev
+                                )
+                            }
+                        >
+                            {showAllCommits
+                                ? "간략히 보기"
+                                : "전체 보기"}
+                        </button>
+                    )}
                 </div>
 
-                <div className="devlog-list">
-                    {project.devLogs.map((log) => (
-                        <article
-                            key={`${log.date}-${log.title}`}
-                            className="devlog-card"
+                {/* Commits */}
+                <div>
+                    {(showAllCommits
+                        ? commits
+                        : commits.slice(0, 3)
+                    ).map((commit) => (
+                        <div
+                            key={commit.sha}
+                            className="commit-item"
                         >
-                            <span className="devlog-date">
-                                {log.date}
+                            <span>
+                                {new Date(
+                                    commit.commit.author.date
+                                ).toLocaleDateString()}
                             </span>
 
-                            <h4>{log.title}</h4>
-
-                            <p className="devlog-summary">
-                                {log.summary}
+                            <p>
+                                {commit.commit.message}
                             </p>
-
-                            <div className="tag-list">
-                                {log.tags.map((tag) => (
-                                    <span
-                                        key={tag}
-                                        className="tag"
-                                    >
-                                        #{tag}
-                                    </span>
-                                ))}
-                            </div>
-                        </article>
+                        </div>
                     ))}
                 </div>
             </div>
