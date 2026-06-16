@@ -1,4 +1,5 @@
 import { type Commission } from "../../data/schemas/commission.schema";
+import "../../styles/commissionCard.css";
 
 type Props = {
     commission: Commission

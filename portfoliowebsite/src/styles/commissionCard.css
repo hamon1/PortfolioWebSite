@@ -1,0 +1,210 @@
+/* commission section */
+#commission-section {
+    padding: 32px 24px;
+}
+
+.back-navigation {
+    margin-bottom: 24px;
+}
+
+.back-navigation a {
+    font-size: 0.85rem;
+    color: var(--text);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+}
+
+.back-navigation a:hover {
+    color: var(--accent);
+}
+
+/* section header */
+.section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.section-header span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.section-header button {
+    height: 36px;
+    padding: 0 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.section-header button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* grid */
+.commission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* card */
+.commission-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.commission-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-border);
+    box-shadow: var(--shadow);
+}
+
+/* thumbnail */
+.commission-thumbnail {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--code-bg);
+}
+
+.commission-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.commission-card:hover .commission-thumbnail img {
+    transform: scale(1.04);
+}
+
+/* content */
+.commission-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.commission-content > span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.commission-content h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-h);
+    line-height: 1.4;
+}
+
+.commission-content > p {
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.55;
+}
+
+/* meta */
+.commission-meta {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.commission-meta span {
+    font-size: 0.75rem;
+    color: var(--text);
+    opacity: 0.7;
+}
+
+/* tags */
+.commission-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.commission-tags div {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--accent-border);
+    background: var(--accent-bg);
+    color: var(--accent);
+}
+
+/* actions */
+.commission-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.commission-actions button {
+    flex: 1;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.commission-actions button:first-child {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+}
+
+.commission-actions button:first-child:hover {
+    opacity: 0.85;
+}
+
+.commission-actions button:last-child {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.commission-actions button:last-child:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
