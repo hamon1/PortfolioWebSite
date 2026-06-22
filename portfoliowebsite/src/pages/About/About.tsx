@@ -4,9 +4,12 @@ import {
     SiTypescript,
     SiVite,
     SiSpringboot,
-    SiMysql,
     SiGit,
     SiFigma,
+    SiClaude,
+    SiGithub,
+    SiFirebase,
+    SiMongodb,
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 
@@ -19,14 +22,18 @@ type TechItem = {
 };
 
 const techStack: TechItem[] = [
-    { name: 'React',        icon: SiReact,       color: '#61DAFB' },
-    { name: 'TypeScript',   icon: SiTypescript,  color: '#3178C6' },
-    { name: 'Vite',         icon: SiVite,        color: '#646CFF' },
-    { name: 'Java',         icon: FaJava,        color: '#ED8B00' },
-    { name: 'Spring Boot',  icon: SiSpringboot,  color: '#6DB33F' },
-    { name: 'MySQL',        icon: SiMysql,       color: '#4479A1' },
-    { name: 'Git',          icon: SiGit,         color: '#F05032' },
-    { name: 'Figma',        icon: SiFigma,       color: '#F24E1E' },
+    { name: 'React',         icon: SiReact,       color: '#61DAFB' },
+    { name: 'React Native',  icon: SiReact,       color: '#61DAFB' },
+    { name: 'TypeScript',    icon: SiTypescript,  color: '#3178C6' },
+    { name: 'Vite',          icon: SiVite,        color: '#646CFF' },
+    { name: 'Java',          icon: FaJava,        color: '#ED8B00' },
+    { name: 'Spring Boot',   icon: SiSpringboot,  color: '#6DB33F' },
+    { name: 'MongoDB',       icon: SiMongodb,     color: '#47A248' },
+    { name: 'Firebase',      icon: SiFirebase,    color: '#FFCA28' },
+    { name: 'Git',           icon: SiGit,         color: '#F05032' },
+    { name: 'GitHub',        icon: SiGithub,      color: '#94A3B8' },
+    { name: 'Figma',         icon: SiFigma,       color: '#F24E1E' },
+    { name: 'Claude Code',   icon: SiClaude,      color: '#C96442' },
 ];
 
 function About() {
