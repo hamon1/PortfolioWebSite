@@ -80,6 +80,9 @@
 }
 
 .tech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     font-family: var(--mono);
     font-size: 0.8rem;
     font-weight: 500;
@@ -95,7 +98,7 @@
 
 .tech-tag:hover {
     border-color: var(--primary-border);
-    color: var(--primary);
+    color: var(--text-h);
 }
 
 /* ── Footer ─────────────────────────────────────────── */

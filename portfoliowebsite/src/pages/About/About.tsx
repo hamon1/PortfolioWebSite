@@ -1,9 +1,32 @@
+import type { IconType } from 'react-icons';
+import {
+    SiReact,
+    SiTypescript,
+    SiVite,
+    SiSpringboot,
+    SiMysql,
+    SiGit,
+    SiFigma,
+} from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
+
 import '../../styles/hero.css';
 
-const techStack = [
-    'React', 'TypeScript', 'Vite',
-    'Java', 'Spring Boot', 'MySQL',
-    'Git', 'Figma',
+type TechItem = {
+    name: string;
+    icon: IconType;
+    color: string;
+};
+
+const techStack: TechItem[] = [
+    { name: 'React',        icon: SiReact,       color: '#61DAFB' },
+    { name: 'TypeScript',   icon: SiTypescript,  color: '#3178C6' },
+    { name: 'Vite',         icon: SiVite,        color: '#646CFF' },
+    { name: 'Java',         icon: FaJava,        color: '#ED8B00' },
+    { name: 'Spring Boot',  icon: SiSpringboot,  color: '#6DB33F' },
+    { name: 'MySQL',        icon: SiMysql,       color: '#4479A1' },
+    { name: 'Git',          icon: SiGit,         color: '#F05032' },
+    { name: 'Figma',        icon: SiFigma,       color: '#F24E1E' },
 ];
 
 function About() {
@@ -38,8 +61,11 @@ function About() {
             <section id="about-section" className="about-section">
                 <p className="section-title">Tech Stack</p>
                 <div className="tech-grid">
-                    {techStack.map((tech) => (
-                        <span key={tech} className="tech-tag">{tech}</span>
+                    {techStack.map(({ name, icon: Icon, color }) => (
+                        <span key={name} className="tech-tag">
+                            <Icon size={15} color={color} />
+                            {name}
+                        </span>
                     ))}
                 </div>
             </section>
