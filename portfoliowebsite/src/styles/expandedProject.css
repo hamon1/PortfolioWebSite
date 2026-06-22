@@ -300,6 +300,56 @@
     font-size: 0.75rem;
 }
 
+/* commit list */
+.commit-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.commit-item {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    transition: background var(--duration-fast) var(--ease);
+}
+
+.commit-item:last-child {
+    border-bottom: none;
+}
+
+.commit-item:hover {
+    background: var(--bg);
+}
+
+.commit-date {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.commit-message {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text);
+    line-height: 1.5;
+    margin: 0;
+    word-break: break-word;
+}
+
+.commit-type {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* retrospective */
 .retrospective {
     line-height: 1.9;
     color: var(--text);

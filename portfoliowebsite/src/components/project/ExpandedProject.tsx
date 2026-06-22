@@ -203,26 +203,36 @@ function ExpandedProject({
                 </div>
 
                 {/* Commits */}
-                <div>
+                <div className="commit-list">
                     {(showAllCommits
                         ? commits
                         : commits.slice(0, 3)
-                    ).map((commit) => (
-                        <div
-                            key={commit.sha}
-                            className="commit-item"
-                        >
-                            <span>
-                                {new Date(
-                                    commit.commit?.author.date
-                                ).toLocaleDateString()}
-                            </span>
+                    ).map((commit) => {
+                        const message = commit.commit?.message ?? '';
+                        const typeMatch = message.match(/^(\w+)(\(.+?\))?(!?:)/);
+                        const type = typeMatch?.[0];
+                        const rest = type ? message.slice(type.length) : message;
 
-                            <p>
-                                {commit.commit?.message}
-                            </p>
-                        </div>
-                    ))}
+                        return (
+                            <div
+                                key={commit.sha}
+                                className="commit-item"
+                            >
+                                <span className="commit-date">
+                                    {new Date(
+                                        commit.commit?.author.date
+                                    ).toLocaleDateString('ko-KR')}
+                                </span>
+
+                                <p className="commit-message">
+                                    {type && (
+                                        <span className="commit-type">{type}</span>
+                                    )}
+                                    {rest}
+                                </p>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
 
