@@ -10,7 +10,7 @@ function CommissionCard({ commission }: Props) {
         <article className="commission-card">
 
             <div className="commission-thumbnail">
-                <img src={commission.image} alt={commission.id} width={400}/>
+                <img src={`${import.meta.env.BASE_URL}${commission.image}`} alt={commission.id} width={400}/>
             </div>
 
             <div className="commission-content">
