@@ -16,7 +16,7 @@ function Projects() {
     );
 
     return (
-        <section>
+        <section id="projects-section" className="projects-section">
             <div className='project-grid-wrapper'>
                 <div className="project-grid">
                     {projects.map((project) => (

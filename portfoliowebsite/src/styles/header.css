@@ -1,0 +1,115 @@
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--header-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transition: background var(--duration-normal) var(--ease);
+}
+
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+/* Logo */
+.nav-logo {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-h);
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+    transition: color var(--duration-fast) var(--ease);
+}
+
+.nav-logo span {
+    color: var(--primary);
+}
+
+.nav-logo:hover {
+    color: var(--primary);
+}
+
+/* Nav links */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+}
+
+.nav-links li button,
+.nav-links li a {
+    background: none;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+        color var(--duration-fast) var(--ease),
+        background var(--duration-fast) var(--ease);
+}
+
+.nav-links li button:hover,
+.nav-links li a:hover {
+    color: var(--text-h);
+    background: var(--surface);
+}
+
+/* Theme toggle */
+.theme-toggle {
+    margin-left: auto;
+    flex-shrink: 0;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition:
+        border-color var(--duration-fast) var(--ease),
+        color var(--duration-fast) var(--ease),
+        background var(--duration-fast) var(--ease);
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-bg);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .nav-links {
+        display: none;
+    }
+
+    .nav-inner {
+        justify-content: space-between;
+    }
+}

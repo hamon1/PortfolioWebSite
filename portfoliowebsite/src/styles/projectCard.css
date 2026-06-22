@@ -1,51 +1,34 @@
 .project-card {
     width: 280px;
     height: 360px;
-    
-    margin: 12px;
     padding: 8px;
-
-    background: #161b22;
-
-    border: 1px solid #2a2f3a;
-
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 16px;
-
     overflow: hidden;
-
     display: flex;
     flex-direction: column;
-
-    transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-
     cursor: pointer;
+    transition:
+        transform var(--duration-fast) var(--ease),
+        border-color var(--duration-fast) var(--ease),
+        box-shadow var(--duration-fast) var(--ease);
 }
 
-/* hover */
 .project-card:hover {
     transform: translateY(-4px);
-
-    border-color: #58a6ff;
-
-    box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.35),
-        0 0 12px rgba(88, 166, 255, 0.15);
+    border-color: var(--primary-border);
+    box-shadow: var(--shadow);
 }
 
-/* image */
 .project-card img {
     width: 100%;
     height: 150px;
-
     object-fit: cover;
-
-    border-bottom: 1px solid #2a2f3a;
+    border-radius: 10px;
+    border-bottom: 1px solid var(--border);
 }
 
-/* content area */
 .project-card h3,
 .project-card p,
 .project-card button {
@@ -53,56 +36,41 @@
     margin-right: 14px;
 }
 
-/* title */
 .project-card h3 {
     margin-top: 14px;
     margin-bottom: 8px;
-
     font-size: 1rem;
     font-weight: 700;
-
-    color: #f3f4f6;
+    color: var(--text-h);
 }
 
-/* description */
 .project-card p {
     flex: 1;
-
     font-size: 0.85rem;
     line-height: 1.5;
-
-    color: #9ca3af;
-
+    color: var(--text);
     overflow: hidden;
-
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 
-/* button */
 .project-card button {
     margin-bottom: 14px;
-
     height: 38px;
-
     border: none;
     border-radius: 10px;
-
-    background: #2388ff;
-
+    background: var(--primary);
     color: white;
-
     font-size: 0.85rem;
     font-weight: 600;
-
+    cursor: pointer;
     transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+        background var(--duration-fast) var(--ease),
+        transform var(--duration-fast) var(--ease);
 }
 
 .project-card button:hover {
-    background: #4ea1ff;
-
+    background: var(--primary-hover);
     transform: translateY(-1px);
 }
