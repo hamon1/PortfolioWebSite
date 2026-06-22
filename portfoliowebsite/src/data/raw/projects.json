@@ -1,62 +1,62 @@
-[
-    {
-        "id": "travelbuddy",
-        "title": "TravelBUDDY",
-        "description": "여행 계획 협업 앱",
-        "period": "2024.04 ~ 2024.11",
-        "teamSize": "2인",
-        "role": "full-stack",
-        "thumbnail": "travelbuddy.webp",
-        "tags": [
-            "React Native",
-            "Firebase"
-        ],
-        "github": "https://github.com/example",
-        "featured": true
-    },
-    {
-        "id": "travelbuddy",
-        "title": "TravelBUDDY",
-        "description": "여행 계획 협업 앱",
-        "period": "2025.01 ~ 2025.03",
-        "teamSize": "2인",
-        "role": "Frontend",
-        "thumbnail": "travelbuddy.webp",
-        "tags": [
-            "React Native",
-            "Firebase"
-        ],
-        "github": "https://github.com/example",
-        "featured": true
-    },
-    {
-        "id": "travelbuddy",
-        "title": "TravelBUDDY",
-        "description": "여행 계획 협업 앱",
-        "period": "2025.01 ~ 2025.03",
-        "teamSize": "2인",
-        "role": "Frontend",
-        "thumbnail": "travelbuddy.webp",
-        "tags": [
-            "React Native",
-            "Firebase"
-        ],
-        "github": "https://github.com/example",
-        "featured": true
-    },
-    {
-        "id": "travelbuddy",
-        "title": "TravelBUDDY",
-        "description": "여행 계획 협업 앱",
-        "period": "2025.01 ~ 2025.03",
-        "teamSize": "2인",
-        "role": "Frontend",
-        "thumbnail": "travelbuddy.webp",
-        "tags": [
-            "React Native",
-            "Firebase"
-        ],
-        "github": "https://github.com/example",
-        "featured": true
-    }
-]
+{
+    "id": "travelbuddy",
+    "title": "TravelBUDDY",
+    "shortDescription": "여행 계획 협업 앱",
+    "description": "여행 일정을 공유하고 함께 계획할 수 있는 협업 서비스",
+    "thumbnail": "/images/projects/travelbuddy/thumb.webp",
+    "period": "2025.01 ~ 2025.03",
+    "teamSize": "2인",
+    "role": "Frontend",
+    "techStack": [
+        "React",
+        "TypeScript",
+        "Zustand",
+        "Firebase"
+    ],
+    "githubUrl": "https://github.com/example/travelbuddy",
+    "deployUrl": "https://travelbuddy.vercel.app",
+    "features": [
+        {
+            "title": "실시간 일정 공유",
+            "description": "여행 일정을 팀원과 동시에 수정 가능"
+        },
+        {
+            "title": "지도 기반 플래너",
+            "description": "장소를 지도에 시각적으로 배치"
+        }
+    ],
+    "demos": [
+        {
+            "title": "메인 화면",
+            "type": "image",
+            "src": "/images/projects/travelbuddy/demo-main.webp"
+        },
+        {
+            "title": "일정 생성 시연",
+            "type": "gif",
+            "src": "/images/projects/travelbuddy/create-plan.gif"
+        }
+    ],
+    "devLogs": [
+        {
+            "date": "2025-02-12",
+            "title": "상태 관리 구조 개선",
+            "summary": "props drilling 제거",
+            "content": "Zustand를 이용해 전역 상태 구조로 변경",
+            "tags": [
+                "zustand",
+                "react"
+            ]
+        }
+    ],
+    "troubles": [
+        {
+            "problem": "일정 drag 중 렌더링 지연",
+            "cause": "불필요한 전체 리스트 re-render",
+            "solution": "memo 및 selector 기반 최적화",
+            "result": "체감 성능 개선"
+        }
+    ],
+    "retrospective": "협업 구조와 상태 설계 경험을 얻음",
+    "featured": true
+}
