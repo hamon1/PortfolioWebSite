@@ -1,12 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/PortfolioWebSite/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfoliowebsite</title>
-    <script type="module" crossorigin src="/PortfolioWebSite/assets/index-CSLK4wEV.js"></script>
-    <link rel="stylesheet" crossorigin href="/PortfolioWebSite/assets/index-Ck7Atiby.css">
+    <meta name="description" content="이정현 프론트엔드 개발자 포트폴리오" />
+    <title>hamon.dev</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <script>
+      (function () {
+        var saved = localStorage.getItem('theme');
+        document.documentElement.setAttribute('data-theme', saved || 'dark');
+      })();
+    </script>
+    <script type="module" crossorigin src="/PortfolioWebSite/assets/index-34Z-VgO5.js"></script>
+    <link rel="stylesheet" crossorigin href="/PortfolioWebSite/assets/index-Cpn_DY0n.css">
   </head>
   <body>
     <div id="root"></div>
