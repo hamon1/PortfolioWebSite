@@ -3,57 +3,91 @@
     "title": "FeatherTales",
     "githubRepo": "hamon1/FeatherTales",
     "shortDescription": "공간 기반 소셜 커뮤니티 플랫폼",
-    "description": "감정 기록과 아바타 커스터마이징을 결합한 공간 기반 인터랙션 플랫폼",
-    "thumbnail": "/images/projects/feathertales/thumb.webp",
+    "problemStatement": {
+        "background": "SNS 피드는 타임라인 중심이라 내 기록이 아닌 타인의 콘텐츠 소비에 집중되고, 감정 기록을 남기기엔 공개형 SNS가 심리적으로 부담스러움",
+        "painPoint": "일기장은 공유가 불가능하고 SNS는 공개 범위 조절이 어려워 '내 공간에 기록하면서 친구와 연결'하는 중간 지점이 없음",
+        "goal": "내 공간을 중심으로 하되 친구와 선택적으로 연결할 수 있는 아바타 기반 감정 기록 플랫폼을 구현"
+    },
+    "thumbnail": "images/projects/FeatherTales/Main.png",
     "period": "2025.04 ~ 2025.07",
-    "teamSize": "2인",
+    "teamSize": "1인",
     "role": "Frontend / FullStack",
     "techStack": [
-        "React",
-        "Node.js",
-        "MongoDB",
-        "Express",
-        "JavaScript"
+        {
+            "name": "React",
+            "reason": "아바타 이동·커스터마이징·책방 등 인터랙티브 UI를 컴포넌트 단위로 독립 관리하기 위해"
+        },
+        {
+            "name": "Node.js",
+            "reason": "팀원이 Node.js에 익숙하고, 프론트와 백엔드 언어를 통일해 맥락 전환 비용을 줄이기 위해"
+        },
+        {
+            "name": "MongoDB",
+            "reason": "아바타 옵션·글 목록·좌표 등 스키마가 유동적인 데이터를 유연하게 저장하기 위해"
+        },
+        {
+            "name": "Express",
+            "reason": "REST API를 최소한의 설정으로 빠르게 구축할 수 있어 프로토타이핑 속도를 확보하기 위해"
+        },
+        {
+            "name": "JavaScript",
+            "reason": "프론트와 백엔드 언어를 통일해 팀 간 코드 리뷰 효율을 높이기 위해"
+        }
     ],
     "githubUrl": "https://github.com/example/feathertales",
     "deployUrl": "https://feathertales.app",
     "features": [
         {
             "title": "인터랙티브 홈 환경",
-            "description": "좌표 기반 아바타 이동 및 공간 인터랙션 지원"
+            "description": "좌표 기반 아바타 이동 및 공간 인터랙션 지원",
+            "intent": "피드 스크롤 대신 내 공간을 걸어다니는 감각으로 기록 동기를 높이기 위해 공간 중심 UX를 핵심으로 설계",
+            "priority": "core"
         },
         {
             "title": "아바타 커스터마이징",
-            "description": "다양한 옵션 조합을 통한 사용자 개성 표현"
+            "description": "다양한 옵션 조합을 통한 사용자 개성 표현",
+            "intent": "실제 SNS 프로필 사진 대신 아바타로 정체성을 표현해 심리적 노출 부담을 낮추기 위해",
+            "priority": "core"
         },
         {
             "title": "책방 시스템",
-            "description": "글 작성, 분류, Drag & Drop 기반 정렬 기능 제공"
+            "description": "글 작성, 분류, Drag & Drop 기반 정렬 기능 제공",
+            "intent": "글이 타임라인에 묻히지 않고 분류·정렬이 가능한 나만의 공간으로 영구히 남기 위해",
+            "priority": "core"
         },
         {
             "title": "친구 시스템",
-            "description": "검색, 요청, 수락 기반 사용자 관계 관리"
+            "description": "검색, 요청, 수락 기반 사용자 관계 관리",
+            "intent": "전체 공개 대신 친구 단위 선택적 연결로 공유 부담을 낮추기 위해",
+            "priority": "extension"
         },
         {
             "title": "감정 기록 공간",
-            "description": "개인 기록 중심의 사용자 공간 구성"
+            "description": "개인 기록 중심의 사용자 공간 구성",
+            "intent": "감정 데이터를 별도 공간으로 분리해 기록과 공유를 독립적으로 관리 가능하게 하기 위해",
+            "priority": "extension"
         }
     ],
     "demos": [
         {
+            "title": "로그인 화면",
+            "type": "image",
+            "src": "images/projects/FeatherTales/Login.png"
+        },
+        {
             "title": "메인 인터랙션 화면",
             "type": "image",
-            "src": "/images/projects/feathertales/demo-home.webp"
+            "src": "images/projects/FeatherTales/Main.png"
         },
         {
             "title": "아바타 이동 시연",
             "type": "gif",
-            "src": "/images/projects/feathertales/avatar-move.gif"
+            "src": "images/projects/FeatherTales/Main_gif.gif"
         },
         {
             "title": "책방 Drag & Drop",
-            "type": "gif",
-            "src": "/images/projects/feathertales/bookshelf-dnd.gif"
+            "type": "image",
+            "src": "images/projects/FeatherTales/Doc.png"
         }
     ],
     "devLogs": [
@@ -111,12 +145,22 @@
             "result": "불필요한 이벤트 호출 감소"
         }
     ],
-    "retrospective": "공간 기반 UX와 상태 중심 인터랙션 설계를 직접 구현하며 사용자 경험 중심 프론트엔드 구조와 데이터 흐름 설계를 깊게 경험함",
-    "scalability": [
-        "공간 인테리어 시스템 확장",
-        "WebSocket 기반 실시간 방문 기능",
-        "실시간 채팅 및 상태 동기화",
-        "멀티 유저 인터랙션 구조 확장"
+    "domainInsights": [
+        {
+            "observation": "SNS 기록이 타임라인에 묻혀 '내 글을 다시 찾기 어렵다'는 불편이 반복됨",
+            "impact": "검색 피드 구조 대신 책방·공간 기반으로 글을 직접 배치·분류하는 구조를 핵심으로 설계"
+        },
+        {
+            "observation": "공개형 SNS에서 감정 기록을 부담 없이 남기기 어려움을 자주 경험",
+            "impact": "전체 공개 기본값 대신 친구 단위 공개를 기본으로, 개인 감정 공간을 별도 분리"
+        }
     ],
+    "validation": {
+        "deployed": false,
+        "userCount": "지인 5명 베타 사용",
+        "feedback": "공간을 직접 걷는 UX가 SNS와 달라서 신선하다는 반응, 책방 정렬 기능을 자주 활용",
+        "learnings": "모바일 환경에서 아바타 이동 조작이 불편하다는 피드백 → 터치 기반 이동 UX 개선 필요 확인"
+    },
+    "retrospective": "공간 기반 UX와 상태 중심 인터랙션 설계를 직접 구현하며 사용자 경험 중심 프론트엔드 구조와 데이터 흐름 설계를 깊게 경험함",
     "featured": true
 }

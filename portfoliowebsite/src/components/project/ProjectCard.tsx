@@ -18,7 +18,7 @@ function ProjectCard({ project, onExpand }: Props) {
 
             <h3>{project.title}</h3>
 
-            <p>{project.description}</p>
+            <p>{project.shortDescription}</p>
 
             <button onClick={onExpand}>
                 전체 보기

@@ -12,6 +12,11 @@
     overflow-y: hidden;
     width: 100%;
     padding: 0 24px;
+    scrollbar-width: none;
+}
+
+.project-grid-wrapper::-webkit-scrollbar {
+    display: none;
 }
 
 .project-grid {
@@ -20,17 +25,6 @@
     gap: 20px;
     width: max-content;
     padding-bottom: 12px;
-}
 
-.project-grid::-webkit-scrollbar {
-    height: 4px;
-}
-
-.project-grid::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 999px;
-}
-
-.project-grid::-webkit-scrollbar-track {
-    background: transparent;
+    scroll-snap-type: x mandatory;
 }

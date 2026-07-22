@@ -4,6 +4,7 @@ import '../../styles/header.css';
 
 function Header() {
     const [isDark, setIsDark] = useState(true);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -12,6 +13,15 @@ function Header() {
         const dark = saved !== 'light';
         setIsDark(dark);
     }, []);
+
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [isMenuOpen]);
 
     const toggleTheme = () => {
         const next = !isDark;
@@ -22,6 +32,7 @@ function Header() {
     };
 
     const scrollTo = (id: string) => {
+        setIsMenuOpen(false);
         if (location.pathname !== '/') {
             navigate('/');
             setTimeout(() => {
@@ -39,7 +50,7 @@ function Header() {
                     hamon<span>.dev</span>
                 </button>
 
-                <ul className="nav-links">
+                <ul className={`nav-links${isMenuOpen ? ' nav-links--open' : ''}`}>
                     <li>
                         <button onClick={() => scrollTo('hero-section')}>About</button>
                     </li>
@@ -47,7 +58,7 @@ function Header() {
                         <button onClick={() => scrollTo('projects-section')}>Projects</button>
                     </li>
                     <li>
-                        <Link to="/commission">Commission</Link>
+                        <Link to="/commission" onClick={() => setIsMenuOpen(false)}>Commission</Link>
                     </li>
                     <li>
                         <button onClick={() => scrollTo('contact-section')}>Contact</button>
@@ -60,6 +71,15 @@ function Header() {
                     aria-label="Toggle theme"
                 >
                     {isDark ? 'light' : 'dark'}
+                </button>
+
+                <button
+                    className="menu-toggle"
+                    onClick={() => setIsMenuOpen((prev) => !prev)}
+                    aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                    aria-expanded={isMenuOpen}
+                >
+                    <span className={`menu-icon${isMenuOpen ? ' menu-icon--open' : ''}`} />
                 </button>
             </nav>
         </header>

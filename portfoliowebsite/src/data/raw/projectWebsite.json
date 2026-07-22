@@ -3,40 +3,69 @@
     "title": "Developer Portfolio Website",
     "githubRepo": "hamon1/PortfolioWebSite",
     "shortDescription": "프로젝트 및 커미션 아카이브 포트폴리오",
-    "description": "React와 TypeScript 기반으로 제작한 개인 포트폴리오 웹사이트. 프로젝트, 커미션, 개발 기록 및 트러블슈팅 경험을 한 곳에서 확인할 수 있도록 설계하였다.",
-    "thumbnail": "/images/projects/portfolio/thumb.webp",
+    "problemStatement": {
+        "background": "프로젝트 정보를 GitHub README, Notion, 이력서에 분산하여 관리하다 보니 업데이트 누락이 잦고 버전이 제각각",
+        "painPoint": "면접관이 실제 개발 과정과 문제 해결 경험을 한눈에 확인할 수 있는 창구가 없어 GitHub 링크 여러 개를 직접 탐색해야 함",
+        "goal": "JSON 하나만 채우면 프로젝트 카드·상세·트러블슈팅·개발일지가 자동 반영되는 단일 포트폴리오 허브를 구현"
+    },
+    "thumbnail": "images/projects/portfolio/thumb.webp",
     "period": "2026.05 ~ 진행중",
     "teamSize": "1인",
-    "role": "Frontend",
+    "role": "Frontend/backend",
     "techStack": [
-        "React",
-        "TypeScript",
-        "Zod",
-        "React Router",
-        "CSS"
+        {
+            "name": "React",
+            "reason": "UI를 데이터 중심으로 선언적으로 구성해 JSON 한 줄 추가로 새 프로젝트를 반영하기 위해"
+        },
+        {
+            "name": "TypeScript",
+            "reason": "JSON 데이터와 컴포넌트 Props 간 타입 일관성을 보장해 데이터 추가 시 오류를 컴파일 타임에 감지하기 위해"
+        },
+        {
+            "name": "Zod",
+            "reason": "런타임에서 JSON 데이터 형식 검증을 자동화해 필드 누락이나 타입 오류를 즉시 감지하기 위해"
+        },
+        {
+            "name": "React Router",
+            "reason": "프로젝트·커미션·데브로그 간 페이지 분리 구조를 SPA로 구현하기 위해"
+        },
+        {
+            "name": "CSS",
+            "reason": "외부 UI 라이브러리 없이 직접 스타일을 제어해 포트폴리오 디자인 일관성을 유지하기 위해"
+        }
     ],
     "githubUrl": "https://github.com/your-id/portfolio-website",
-    "deployUrl": "",
+    "deployUrl": "https://hamon1.github.io/PortfolioWebSite/",
     "features": [
         {
             "title": "프로젝트 아카이브",
-            "description": "프로젝트 목록 및 상세 정보를 카드 형태로 제공"
+            "description": "프로젝트 목록 및 상세 정보를 카드 형태로 제공",
+            "intent": "GitHub README를 방문하지 않아도 모든 프로젝트 정보를 한 곳에서 비교할 수 있도록",
+            "priority": "core"
         },
         {
             "title": "프로젝트 상세 보기",
-            "description": "기능, 데모, 개발 기록, 트러블슈팅 및 회고를 확인 가능"
-        },
-        {
-            "title": "커미션 갤러리",
-            "description": "작업한 커미션을 카테고리별로 정리하여 제공"
+            "description": "기능, 데모, 개발 기록, 트러블슈팅 및 회고를 확인 가능",
+            "intent": "면접관이 기술 선택 이유, 문제 해결 과정, 회고까지 하나의 흐름으로 읽을 수 있도록 설계",
+            "priority": "core"
         },
         {
             "title": "JSON 기반 콘텐츠 관리",
-            "description": "프로젝트 및 커미션 데이터를 JSON으로 관리"
+            "description": "프로젝트 및 커미션 데이터를 JSON으로 관리",
+            "intent": "새 프로젝트 추가 시 컴포넌트를 수정하지 않아도 되는 데이터 주도 구조를 설계",
+            "priority": "core"
         },
         {
             "title": "Zod 데이터 검증",
-            "description": "런타임 데이터 검증을 통해 데이터 무결성 확보"
+            "description": "런타임 데이터 검증을 통해 데이터 무결성 확보",
+            "intent": "JSON 직접 편집 중 발생하는 필드 누락·타입 오류를 런타임에서 즉시 감지하기 위해",
+            "priority": "core"
+        },
+        {
+            "title": "커미션 갤러리",
+            "description": "작업한 커미션을 카테고리별로 정리하여 제공",
+            "intent": "개발 외 그래픽 작업 역량을 별도 섹션으로 구분해 다양한 역량을 함께 보여주기 위해",
+            "priority": "extension"
         }
     ],
     "demos": [
@@ -100,6 +129,16 @@
             "result": "새 프로젝트 추가 시 데이터만 작성하면 자동 반영"
         }
     ],
-    "retrospective": "프로젝트 데이터를 중심으로 UI를 구성하는 구조를 설계하며 React 컴포넌트 설계, TypeScript 타입 관리, Zod 기반 데이터 검증 경험을 쌓을 수 있었다. 향후 검색, 필터링, 다크 모드 및 애니메이션 기능을 추가하여 완성도를 높일 계획이다.",
+    "domainInsights": [
+        {
+            "observation": "포트폴리오를 보는 면접관은 결과물보다 '왜 이 선택을 했는지'를 더 궁금해함",
+            "impact": "기술 선택 이유와 기능 설계 의도를 데이터 구조 레벨에서 필수 필드로 설계"
+        }
+    ],
+    "validation": {
+        "deployed": true,
+        "learnings": "데이터 구조 설계 시 problemStatement, intent 필드를 처음부터 포함했어야 했다는 것을 구현 중 파악 → 구조 개편 진행"
+    },
+    "retrospective": "프로젝트 데이터를 중심으로 UI를 구성하는 구조를 설계하며 React 컴포넌트 설계, TypeScript 타입 관리, Zod 기반 데이터 검증 경험을 쌓을 수 있었다.",
     "featured": true
 }

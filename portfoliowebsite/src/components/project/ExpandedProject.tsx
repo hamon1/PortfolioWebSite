@@ -46,10 +46,6 @@ function ExpandedProject({
                         {project.shortDescription}
                     </p>
 
-                    <p className="project-description">
-                        {project.description}
-                    </p>
-
                     <div className="project-meta">
                         <span>{project.period}</span>
                         <span>{project.teamSize}</span>
@@ -59,10 +55,10 @@ function ExpandedProject({
                     <div className="tech-stack">
                         {project.techStack.map((tech) => (
                             <span
-                                key={tech}
+                                key={tech.name}
                                 className="tech-chip"
                             >
-                                {tech}
+                                {tech.name}
                             </span>
                         ))}
                     </div>
@@ -91,6 +87,44 @@ function ExpandedProject({
                 </div>
             </div>
 
+            {/* Problem Statement */}
+            <div className="project-block">
+                <h3>Problem Statement</h3>
+
+                <div className="problem-statement">
+                    <div className="problem-row">
+                        <strong>배경</strong>
+                        <p>{project.problemStatement.background}</p>
+                    </div>
+
+                    <div className="problem-row">
+                        <strong>문제</strong>
+                        <p>{project.problemStatement.painPoint}</p>
+                    </div>
+
+                    <div className="problem-row">
+                        <strong>목표</strong>
+                        <p>{project.problemStatement.goal}</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Domain Insights */}
+            {project.domainInsights && project.domainInsights.length > 0 && (
+                <div className="project-block">
+                    <h3>Domain Insights</h3>
+
+                    <div className="insight-list">
+                        {project.domainInsights.map((insight, i) => (
+                            <div key={i} className="insight-card">
+                                <p className="insight-observation">"{insight.observation}"</p>
+                                <p className="insight-impact">→ {insight.impact}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
             {/* Features */}
             <div className="project-block">
                 <h3>Features</h3>
@@ -99,11 +133,22 @@ function ExpandedProject({
                     {project.features.map((feature) => (
                         <div
                             key={feature.title}
-                            className="feature-card"
+                            className={`feature-card${feature.priority ? ` feature-${feature.priority}` : ''}`}
                         >
-                            <h4>{feature.title}</h4>
+                            <div className="feature-header">
+                                <h4>{feature.title}</h4>
+                                {feature.priority && (
+                                    <span className={`feature-badge feature-badge-${feature.priority}`}>
+                                        {feature.priority === 'core' ? '핵심' : '확장'}
+                                    </span>
+                                )}
+                            </div>
 
                             <p>{feature.description}</p>
+
+                            {feature.intent && (
+                                <p className="feature-intent">→ {feature.intent}</p>
+                            )}
                         </div>
                     ))}
                 </div>
@@ -235,6 +280,50 @@ function ExpandedProject({
                     })}
                 </div>
             </div>
+
+            {/* Tech Stack Rationale */}
+            <div className="project-block">
+                <h3>Tech Stack</h3>
+
+                <div className="tech-rationale-list">
+                    {project.techStack.map((tech) => (
+                        <div key={tech.name} className="tech-rationale-item">
+                            <span className="tech-name">{tech.name}</span>
+                            <p className="tech-reason">{tech.reason}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Validation */}
+            {project.validation && (
+                <div className="project-block">
+                    <h3>Validation</h3>
+
+                    <div className="validation">
+                        {project.validation.userCount && (
+                            <div className="validation-row">
+                                <strong>사용자</strong>
+                                <p>{project.validation.userCount}</p>
+                            </div>
+                        )}
+
+                        {project.validation.feedback && (
+                            <div className="validation-row">
+                                <strong>반응</strong>
+                                <p>{project.validation.feedback}</p>
+                            </div>
+                        )}
+
+                        {project.validation.learnings && (
+                            <div className="validation-row">
+                                <strong>확인</strong>
+                                <p>{project.validation.learnings}</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
 
             {/* Retrospective */}
             {project.retrospective && (

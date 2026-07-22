@@ -3,56 +3,82 @@
     "title": "Focus Timer",
     "githubRepo": "hamon1/Focus",
     "shortDescription": "Electron 기반 데스크톱 집중 타이머",
-    "description": "집중 시간 관리와 몰입 경험 향상을 목표로 제작한 Electron 기반 데스크톱 타이머 애플리케이션",
-    "thumbnail": "/images/projects/focus-timer/thumb.webp",
+    "problemStatement": {
+        "background": "집중하려 할 때 브라우저 탭·알림·SNS로 인한 주의 분산이 반복되고, 기존 타이머 앱은 화면 전환을 강제해 작업 흐름이 끊김",
+        "painPoint": "타이머를 확인하려고 화면을 전환하는 순간 다른 탭이나 알림에 시선을 빼앗기는 악순환이 발생",
+        "goal": "작업 화면 위에 항상 떠 있으면서도 방해가 되지 않는 최소한의 집중 타이머를 데스크톱 환경에서 구현"
+    },
+    "thumbnail": "images/projects/Focat/Focat_full.png",
     "period": "2026.03 ~ 2026.04",
     "teamSize": "1인",
     "role": "Frontend / Desktop App",
     "techStack": [
-        "Electron",
-        "JavaScript",
-        "HTML",
-        "CSS"
+        {
+            "name": "Electron",
+            "reason": "웹 기술로 데스크톱 앱을 구현해 운영체제 API, 시스템 트레이, always-on-top 기능을 활용하기 위해"
+        },
+        {
+            "name": "JavaScript",
+            "reason": "Electron 환경에서 추가 빌드 설정 없이 빠르게 프로토타이핑하고 IPC 구조를 직접 설계하기 위해"
+        },
+        {
+            "name": "HTML",
+            "reason": "Electron Renderer Process는 브라우저 환경이므로 표준 웹 기술로 UI를 구성"
+        },
+        {
+            "name": "CSS",
+            "reason": "CSS 변수 기반으로 투명도·테마를 런타임에 실시간 조절하는 구조를 구현하기 위해"
+        }
     ],
     "githubUrl": "https://github.com/example/focus-timer",
-    "deployUrl": "https://focus-timer.app",
+    "deployUrl": "https://github.com/hamon1/Focus/releases/tag/v1.0.3",
     "features": [
         {
             "title": "집중 타이머 시스템",
-            "description": "Start / Pause / Stop / Reset 상태 기반 타이머 제어"
+            "description": "Start / Pause / Stop / Reset 상태 기반 타이머 제어",
+            "intent": "집중 상태를 명확한 4단계로 분리해 사용자가 현재 상태를 직관적으로 인식하도록 설계",
+            "priority": "core"
         },
         {
             "title": "3단계 UI 모드",
-            "description": "Mini / Timer / Full 모드 전환 지원"
+            "description": "Mini / Timer / Full 모드 전환 지원",
+            "intent": "작업 중에도 타이머가 방해되지 않도록 필요한 크기로 줄이는 유연성 확보",
+            "priority": "core"
         },
         {
             "title": "목표 및 기록 관리",
-            "description": "집중 목표 생성과 세션 기록 저장"
+            "description": "집중 목표 생성과 세션 기록 저장",
+            "intent": "단순 카운트다운을 넘어 집중 데이터가 누적되는 경험을 제공하기 위해",
+            "priority": "extension"
         },
         {
             "title": "투명도 설정",
-            "description": "CSS 변수 기반 실시간 opacity 조절"
+            "description": "CSS 변수 기반 실시간 opacity 조절",
+            "intent": "창이 항상 최상단에 위치하면서도 배경 작업을 가리지 않도록 사용자가 직접 조절 가능하게",
+            "priority": "extension"
         },
         {
             "title": "밈 팝업 인터랙션",
-            "description": "이벤트 기반 별도 오버레이 창 출력"
+            "description": "이벤트 기반 별도 오버레이 창 출력",
+            "intent": "집중 종료 시 긍정적 피드백을 통해 집중 완료를 보상하는 경험을 설계",
+            "priority": "extension"
         }
     ],
     "demos": [
         {
             "title": "타이머 메인 화면",
             "type": "image",
-            "src": "/images/projects/focus-timer/demo-main.webp"
+            "src": "images/projects/Focat/Focat_full.png"
         },
         {
             "title": "미니 모드 시연",
             "type": "gif",
-            "src": "/images/projects/focus-timer/mini-mode.gif"
+            "src": "images/projects/Focat/Focat_mini.png"
         },
         {
             "title": "밈 팝업 인터랙션",
             "type": "gif",
-            "src": "/images/projects/focus-timer/meme-popup.gif"
+            "src": "images/projects/focus-timer/meme-popup.gif"
         }
     ],
     "devLogs": [
@@ -115,18 +141,22 @@
             "result": "상태 일관성 확보 및 사용자 경험 개선"
         }
     ],
-    "retrospective": "Electron의 Main / Renderer / Preload 구조와 IPC 기반 아키텍처를 직접 설계하며 데스크톱 환경의 UI/UX와 상태 관리 흐름을 깊게 이해하게 됨",
-    "updates": [
+    "domainInsights": [
         {
-            "version": "v1.0.1",
-            "date": "2026-04-20",
-            "content": "화면 opacity 조절 슬라이더 기능 추가"
+            "observation": "집중 앱을 쓰다 보면 '앱을 확인하는 행위 자체'가 집중을 깨는 원인이 됨",
+            "impact": "타이머를 별도 창으로 분리하고 always-on-top + 미니 모드를 핵심 기능으로 우선 설계"
         },
         {
-            "version": "v1.0.2",
-            "date": "2026-04-27",
-            "content": "미니모드에서 타이머 조작 기능 추가"
+            "observation": "뽀모도로 방식이 잘 맞지 않는 사람은 고정 간격보다 자유로운 목표 기반 집중을 선호",
+            "impact": "강제 휴식 없이 Goal → Task 구조로 사용자가 직접 집중 단위를 정의하도록 설계"
         }
     ],
+    "validation": {
+        "deployed": true,
+        "userCount": "개인 일 사용 (개발 중 dogfooding)",
+        "feedback": "미니 모드가 화면을 거의 차지하지 않아 다른 작업과 병행하기 편함",
+        "learnings": "타이머 종료 후 다음 Task 자동 전환 기능 부재가 사용 흐름을 끊음 → 다음 버전 과제 확인"
+    },
+    "retrospective": "Electron의 Main / Renderer / Preload 구조와 IPC 기반 아키텍처를 직접 설계하며 데스크톱 환경의 UI/UX와 상태 관리 흐름을 깊게 이해하게 됨",
     "featured": true
 }

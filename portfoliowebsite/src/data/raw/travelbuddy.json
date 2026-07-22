@@ -3,39 +3,74 @@
     "title": "TravelBUDDY",
     "githubRepo": "hamon1/TRAVEL",
     "shortDescription": "여행 계획 협업 앱",
-    "description": "여행 일정을 공유하고 함께 계획할 수 있는 협업 서비스",
-    "thumbnail": "/images/projects/travelbuddy/thumb.webp",
-    "period": "2025.01 ~ 2025.03",
+    "problemStatement": {
+        "background": "여행 계획을 여러 명이 함께 세울 때 카카오톡 채팅과 스프레드시트를 번갈아 쓰는 방식이 반복됨",
+        "painPoint": "일정이 업데이트될 때마다 전체 공유가 필요해 버전 불일치와 혼선이 잦음",
+        "goal": "참여자 전원이 같은 화면에서 동시에 일정을 조율할 수 있는 단일 협업 공간을 만들 것"
+    },
+    "thumbnail": "images/projects/TravelBUDDY/Main.png",
+    "period": "2024.04 ~ 2024.11",
     "teamSize": "2인",
-    "role": "Frontend",
+    "role": "Full",
     "techStack": [
-        "React",
-        "TypeScript",
-        "Zustand",
-        "Firebase"
+        {
+            "name": "React",
+            "reason": "일정 뷰와 지도 뷰를 컴포넌트 단위로 독립 관리해 실시간 업데이트 범위를 최소화하기 위해"
+        },
+        {
+            "name": "TypeScript",
+            "reason": "2인 협업에서 타입 불일치로 인한 런타임 오류를 컴파일 타임에 잡아내기 위해"
+        },
+        {
+            "name": "Zustand",
+            "reason": "여러 컴포넌트가 동일한 일정 상태를 참조해야 해서 전역 상태 관리가 필요"
+        },
+        {
+            "name": "Firebase",
+            "reason": "실시간 DB 동기화와 인증을 직접 구축하지 않고 검증된 인프라를 활용하기 위해"
+        }
     ],
     "githubUrl": "https://github.com/example/travelbuddy",
     "deployUrl": "https://travelbuddy.vercel.app",
     "features": [
         {
             "title": "실시간 일정 공유",
-            "description": "여행 일정을 팀원과 동시에 수정 가능"
+            "description": "여행 일정을 팀원과 동시에 수정 가능",
+            "intent": "일정 충돌의 원인이 버전 불일치임을 파악하고, 단일 실시간 뷰를 가장 먼저 설계",
+            "priority": "core"
         },
         {
             "title": "지도 기반 플래너",
-            "description": "장소를 지도에 시각적으로 배치"
+            "description": "장소를 지도에 시각적으로 배치",
+            "intent": "장소 목록만으로는 이동 동선이 직관적이지 않아 공간 중심 시각화를 핵심 기능으로 추가",
+            "priority": "core"
         }
     ],
     "demos": [
         {
             "title": "메인 화면",
             "type": "image",
-            "src": "/images/projects/travelbuddy/demo-main.webp"
+            "src": "images/projects/TravelBUDDY/Main.png"
+        },
+        {
+            "title": "지도 화면",
+            "type": "image",
+            "src": "images/projects/TravelBUDDY/map.png"
         },
         {
             "title": "일정 생성 시연",
-            "type": "gif",
-            "src": "/images/projects/travelbuddy/create-plan.gif"
+            "type": "image",
+            "src": "images/projects/TravelBUDDY/Trip.png"
+        },
+        {
+            "title": "채팅 화면",
+            "type": "image",
+            "src": "images/projects/TravelBUDDY/Chat.png"
+        },
+        {
+            "title": "유저 프로필 화면",
+            "type": "image",
+            "src": "images/projects/TravelBUDDY/UserProfile.png"
         }
     ],
     "devLogs": [
@@ -58,6 +93,18 @@
             "result": "체감 성능 개선"
         }
     ],
+    "domainInsights": [
+        {
+            "observation": "여행 그룹에서 한 명이 일정 전체를 짜고 나머지가 수정을 요청하는 패턴이 반복됨",
+            "impact": "편집자 독점 문제를 해소하기 위해 권한 없이 모두가 수정 가능한 구조를 우선으로 설계"
+        }
+    ],
+    "validation": {
+        "deployed": false,
+        "userCount": "지인 2팀 (6명) 실사용",
+        "feedback": "카카오톡 없이도 일정 조율이 된다는 반응, 지도에서 장소 순서 바꾸는 기능을 자주 사용",
+        "learnings": "모바일에서 지도 터치 조작이 불편하다는 피드백 → 핀치 줌·드래그 UX 개선 필요 확인"
+    },
     "retrospective": "협업 구조와 상태 설계 경험을 얻음",
     "featured": true
 }

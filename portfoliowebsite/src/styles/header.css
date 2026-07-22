@@ -103,13 +103,112 @@
     background: var(--primary-bg);
 }
 
+/* Hamburger — hidden on desktop */
+.menu-toggle {
+    display: none;
+}
+
 /* Mobile */
 @media (max-width: 640px) {
+    .nav-inner {
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    /* Hamburger button */
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    /* 3-bar icon via pseudo-elements */
+    .menu-icon {
+        position: relative;
+        display: block;
+        width: 16px;
+        height: 2px;
+        background: var(--text-h);
+        border-radius: 2px;
+        transition: background var(--duration-fast) var(--ease);
+    }
+
+    .menu-icon::before,
+    .menu-icon::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 16px;
+        height: 2px;
+        background: var(--text-h);
+        border-radius: 2px;
+        transition:
+            transform var(--duration-fast) var(--ease),
+            top var(--duration-fast) var(--ease),
+            opacity var(--duration-fast) var(--ease);
+    }
+
+    .menu-icon::before { top: -5px; }
+    .menu-icon::after  { top:  5px; }
+
+    /* Open state: transform to X */
+    .menu-icon--open {
+        background: transparent;
+    }
+
+    .menu-icon--open::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    .menu-icon--open::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    /* Nav links — hidden by default */
     .nav-links {
         display: none;
     }
 
-    .nav-inner {
-        justify-content: space-between;
+    /* Nav links — open state: full-width dropdown */
+    .nav-links--open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--header-bg);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-top: 1px solid var(--border);
+        padding: 16px 0;
+        gap: 0;
+        z-index: 99;
+        overflow-y: auto;
+    }
+
+    .nav-links--open li {
+        width: 100%;
+    }
+
+    .nav-links--open li button,
+    .nav-links--open li a {
+        display: block;
+        width: 100%;
+        padding: 14px 24px;
+        border-radius: 0;
+        font-size: 1rem;
+        text-align: left;
     }
 }
