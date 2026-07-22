@@ -2,10 +2,20 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    border-bottom: 1px solid var(--border);
+}
+
+/* backdrop-filter를 ::before로 분리 — site-header에 직접 걸면
+   position:fixed 자식의 containing block이 viewport → header로 바뀌어
+   모바일 메뉴(top:60px; bottom:0)의 높이가 0이 되는 버그 발생 */
+.site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     background: var(--header-bg);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
     transition: background var(--duration-normal) var(--ease);
 }
 
