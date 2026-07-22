@@ -1,37 +1,37 @@
-function ProjectDetail() {
-    return (
-        <article className="project-card">
+// function ProjectDetail() {
+//     return (
+//         <article className="project-card">
 
-            <div className="thumbnail">
-                THUMBNAIL
-            </div>
+//             <div className="thumbnail">
+//                 THUMBNAIL
+//             </div>
 
-            <div className="project-content">
+//             <div className="project-content">
 
-                <span>
-                    React Native
-                </span>
+//                 <span>
+//                     React Native
+//                 </span>
 
-                <h3>
-                    TravelBUDDY
-                </h3>
+//                 <h3>
+//                     TravelBUDDY
+//                 </h3>
 
-                <p>
-                    여행 일정 및 협업 서비스
-                </p>
+//                 <p>
+//                     여행 일정 및 협업 서비스
+//                 </p>
 
-                <div className="tags">
+//                 <div className="tags">
 
-                    <span>#Map</span>
-                    <span>#Chat</span>
-                    <span>#Schedule</span>
+//                     <span>#Map</span>
+//                     <span>#Chat</span>
+//                     <span>#Schedule</span>
 
-                </div>
+//                 </div>
 
-            </div>
+//             </div>
 
-        </article>
-    );
-}
+//         </article>
+//     );
+// }
 
-export default ProjectDetail;
+// export default ProjectDetail;
