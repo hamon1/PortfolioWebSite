@@ -6,6 +6,8 @@ import MainLayout from '../layouts/MainLayout';
 
 import Home from '../pages/Home/Home';
 import Commission from '../pages/Commission/Commission';
+import Blog from '../pages/Blog/Blog';
+import BlogPost from '../pages/Blog/BlogPost';
 
 const router = createBrowserRouter([
     {
@@ -18,7 +20,20 @@ const router = createBrowserRouter([
             },
         ],
     },
-
+    {
+        path: '/blog',
+        element: <MainLayout />,
+        children: [
+            {
+                index: true,
+                element: <Blog />,
+            },
+            {
+                path: ':slug',
+                element: <BlogPost />,
+            },
+        ],
+    },
     {
         path: '/commission',
         element: <Commission />,
