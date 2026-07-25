@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { DemoSchema } from './demo.schema';
-import { DevLogSchema } from './devLog.schema';
+// import { DevLogSchema } from './devLog.schema';
 import { FeatureSchema } from './feature.schema';
 import { TroubleSchema } from './trouble.schema';
 
@@ -57,7 +57,7 @@ export const ProjectSchema = z.object({
 
     demos: z.array(DemoSchema),
 
-    devLogs: z.array(DevLogSchema),
+    // devLogs: z.array(DevLogSchema),
 
     troubles: z.array(TroubleSchema),
 

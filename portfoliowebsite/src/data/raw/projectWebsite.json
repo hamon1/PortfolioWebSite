@@ -104,7 +104,7 @@
             "problem": "이미지 렌더링 속도 저하 문제",
             "cause": "이미지들이 public 경로에 저장 -> src/assets에 저장되는 이미지와는 달리 원본 용량 그대로 배포되어 속도가 저하되는 문제",
             "solution": "이미지 압축/포맷 변환",
-            "result": "진행 중"
+            "result": "이미지 렌더링 속도 단축 확인"
         }
     ],
     "domainInsights": [

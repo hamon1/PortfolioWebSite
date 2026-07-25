@@ -15,7 +15,7 @@ function CommissionCard({ commission }: Props) {
 
             <div className="commission-content">
 
-                <span>
+                {/* <span>
                     Character Illustration
                 </span>
 
@@ -25,7 +25,7 @@ function CommissionCard({ commission }: Props) {
 
                 <p>
                     의상 오마카세 및 배경 포함 작업
-                </p>
+                </p> */}
 
                 <div className="commission-meta">
 
@@ -45,7 +45,7 @@ function CommissionCard({ commission }: Props) {
                     ))}
                 </div>
 
-                <div className="commission-actions">
+                {/* <div className="commission-actions">
 
                     <button>
                         상세 보기
@@ -55,7 +55,7 @@ function CommissionCard({ commission }: Props) {
                         커미션 링크
                     </button>
 
-                </div>
+                </div> */}
 
             </div>
 

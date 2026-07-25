@@ -74,7 +74,7 @@ function ExpandedProject({
                             </a>
                         )}
 
-                        {project.validation.deployed && (
+                        {project.validation?.deployed && (
                             <a
                                 href={project.deployUrl}
                                 target="_blank"

@@ -43,14 +43,14 @@ function About() {
     return (
         <>
             <section id="hero-section" className="hero-section">
-                <span className="hero-label">Frontend Developer</span>
+                <span className="hero-label">Developer</span>
 
                 <h1 className="hero-title">
                     기록하고 만들며<br />성장하는 개발자
                 </h1>
 
                 <p className="hero-desc">
-                    프로젝트와 작업 경험을 코드로 아카이빙합니다.
+                    프로젝트와 작업 경험 아카이빙
                 </p>
 
                 <div className="hero-actions">

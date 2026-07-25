@@ -11,10 +11,10 @@
     "thumbnail": "images/projects/TravelBUDDY/Main.webp",
     "period": "2024.04 ~ 2024.11",
     "teamSize": "2인",
-    "role": "Full",
+    "role": "e2e",
     "techStack": [
         {
-            "name": "React",
+            "name": "React-Native",
             "reason": "일정 뷰와 지도 뷰를 컴포넌트 단위로 독립 관리해 실시간 업데이트 범위를 최소화하기 위해"
         },
         {
