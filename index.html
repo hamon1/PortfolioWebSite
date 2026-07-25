@@ -33,6 +33,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
     <script>
+      // GitHub Pages SPA — restore path from query string
+      (function () {
+        var qs = window.location.search;
+        if (qs[1] === 'p' && qs[2] === '=') {
+          var path = qs.slice(3).split('&q=');
+          var decoded = path[0].replace(/~and~/g, '&');
+          window.history.replaceState(
+            null, null,
+            window.location.pathname + decoded +
+            (path[1] ? '?' + path[1].replace(/~and~/g, '&') : '') +
+            window.location.hash
+          );
+        }
+      })();
       (function () {
         var saved = localStorage.getItem('theme');
         document.documentElement.setAttribute('data-theme', saved || 'dark');
