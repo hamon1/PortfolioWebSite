@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 public record PostRequest(
         @NotBlank String slug,
@@ -13,7 +13,7 @@ public record PostRequest(
         String content,
         @NotNull LocalDate date,
         String projectRef,
-        Set<TagInfo> tags) {
+        List<TagInfo> tags) {
 
     public record TagInfo(
             @NotBlank String name,

@@ -1,18 +1,14 @@
 package com.hamon.portfolio.visitor;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(
-        name = "visitors",
-        uniqueConstraints = @UniqueConstraint(
-                name = "uk_visitor_ip_path_date",
-                columnNames = {"ip", "path", "visit_date"}
-        )
-)
+@Document(collection = "visitors")
+@CompoundIndex(name = "uk_ip_path_date", def = "{'ip': 1, 'path': 1, 'visitDate': 1}", unique = true)
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -20,16 +16,11 @@ import java.time.LocalDate;
 public class Visitor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @Column(nullable = false, length = 45)
     private String ip;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
     private VisitPath path;
 
-    @Column(name = "visit_date", nullable = false)
     private LocalDate visitDate;
 }

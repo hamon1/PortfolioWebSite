@@ -2,51 +2,62 @@ package com.hamon.portfolio.visitor;
 
 import com.hamon.portfolio.visitor.dto.VisitorStatsResponse;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class VisitorService {
 
     private final VisitorRepository visitorRepository;
+    private final MongoTemplate mongoTemplate;
 
-    @Transactional
     public void record(String ip, VisitPath path) {
-        LocalDate today = LocalDate.now();
-        boolean exists = visitorRepository.existsByIpAndPathAndVisitDate(ip, path, today);
-        if (exists) {
-            return;
+        if (!visitorRepository.existsByIpAndPathAndVisitDate(ip, path, LocalDate.now())) {
+            visitorRepository.save(
+                    Visitor.builder()
+                            .ip(ip)
+                            .path(path)
+                            .visitDate(LocalDate.now())
+                            .build()
+            );
         }
-        visitorRepository.save(
-                Visitor.builder()
-                        .ip(ip)
-                        .path(path)
-                        .visitDate(today)
-                        .build()
-        );
     }
 
     public VisitorStatsResponse getStats() {
-        long total = visitorRepository.countDistinctIp();
-        long today = visitorRepository.countDistinctIpByDate(LocalDate.now());
+        long total = mongoTemplate
+                .findDistinct("ip", Visitor.class, String.class)
+                .size();
 
-        List<Object[]> rows = visitorRepository.countGroupByPath();
+        long today = mongoTemplate
+                .findDistinct(
+                        Query.query(Criteria.where("visitDate").is(LocalDate.now())),
+                        "ip", Visitor.class, String.class)
+                .size();
+
         Map<String, Long> byPath = new HashMap<>();
         for (VisitPath vp : VisitPath.values()) {
             byPath.put(vp.name(), 0L);
         }
-        for (Object[] row : rows) {
-            String pathName = ((VisitPath) row[0]).name();
-            long count = (long) row[1];
-            byPath.put(pathName, count);
-        }
+
+        mongoTemplate
+                .aggregate(
+                        Aggregation.newAggregation(
+                                Aggregation.group("path").count().as("count")),
+                        "visitors",
+                        Document.class)
+                .getMappedResults()
+                .forEach(doc -> byPath.put(
+                        doc.getString("_id"),
+                        ((Number) doc.get("count")).longValue()));
 
         return new VisitorStatsResponse(total, today, byPath);
     }

@@ -25,14 +25,14 @@ public class AdminPostController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<PostResponse>> update(
-            @PathVariable Long id,
+            @PathVariable String id,
             @Valid @RequestBody PostRequest request) {
         PostResponse response = postService.update(id, request);
         return ResponseEntity.ok(ApiResponse.success(response));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse<Void>> delete(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Void>> delete(@PathVariable String id) {
         postService.delete(id);
         return ResponseEntity.ok(ApiResponse.success(null));
     }
