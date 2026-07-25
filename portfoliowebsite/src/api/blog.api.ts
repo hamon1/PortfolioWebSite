@@ -39,9 +39,10 @@ export interface PostRequest {
 }
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
+  const { headers: initHeaders, ...restInit } = init ?? {};
   const res = await fetch(`${BASE}${path}`, {
-    headers: { 'Content-Type': 'application/json', ...init?.headers },
-    ...init,
+    ...restInit,
+    headers: { 'Content-Type': 'application/json', ...initHeaders },
   });
   const json = await res.json();
   if (!json.success) throw new Error(json.error ?? `HTTP ${res.status}`);
