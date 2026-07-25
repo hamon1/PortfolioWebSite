@@ -1,22 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { blogApi } from '../../api/blog.api';
-import type { Post, PostRequest } from '../../api/blog.api';
-import { useBlogAuth } from '../../hooks/useBlogAuth';
-import PostEditor from './components/PostEditor';
+import type { Post } from '../../api/blog.api';
 import '../../styles/blog.css';
 
 function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
-  const { token, isAdmin } = useBlogAuth();
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [editing, setEditing] = useState(false);
-  const [deleteLoading, setDeleteLoading] = useState(false);
 
   useEffect(() => {
     if (!slug) return;
@@ -29,26 +23,6 @@ function BlogPost() {
 
     return () => { cancelled = true; };
   }, [slug]);
-
-  const handleUpdate = async (req: PostRequest) => {
-    if (!post || !token) return;
-    const updated = await blogApi.update(post.id, req, token);
-    setPost(updated);
-    setEditing(false);
-  };
-
-  const handleDelete = async () => {
-    if (!post || !token) return;
-    if (!window.confirm(`"${post.title}" 포스트를 삭제하시겠습니까?`)) return;
-    setDeleteLoading(true);
-    try {
-      await blogApi.delete(post.id, token);
-      navigate('/blog');
-    } catch (e) {
-      alert(e instanceof Error ? e.message : '삭제에 실패했습니다.');
-      setDeleteLoading(false);
-    }
-  };
 
   if (loading) {
     return (
@@ -88,18 +62,6 @@ function BlogPost() {
             ))}
           </div>
         )}
-        {isAdmin && (
-          <div className="admin-post-controls">
-            <button className="btn-outline" onClick={() => setEditing(true)}>수정</button>
-            <button
-              className="btn-danger"
-              onClick={handleDelete}
-              disabled={deleteLoading}
-            >
-              {deleteLoading ? '삭제 중...' : '삭제'}
-            </button>
-          </div>
-        )}
       </header>
 
       <div className="blog-post-content">
@@ -107,14 +69,6 @@ function BlogPost() {
           {post.content}
         </ReactMarkdown>
       </div>
-
-      {editing && (
-        <PostEditor
-          initial={post}
-          onSubmit={handleUpdate}
-          onCancel={() => setEditing(false)}
-        />
-      )}
     </article>
   );
 }

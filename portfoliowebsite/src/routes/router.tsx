@@ -8,6 +8,7 @@ import Home from '../pages/Home/Home';
 import Commission from '../pages/Commission/Commission';
 import Blog from '../pages/Blog/Blog';
 import BlogPost from '../pages/Blog/BlogPost';
+import AdminWrite from '../pages/Admin/AdminWrite';
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
                 element: <BlogPost />,
             },
         ],
+    },
+    {
+        path: '/compose',
+        element: <AdminWrite />,
     },
     {
         path: '/commission',

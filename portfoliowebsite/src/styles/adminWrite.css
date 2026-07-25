@@ -1,0 +1,406 @@
+/* ── Admin Write Page ──────────────────────────────────────────── */
+
+.aw-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ── Top bar ──────────────────────────────────────────────────── */
+
+.aw-topbar {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 52px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  gap: 12px;
+}
+
+.aw-topbar-title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.aw-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition:
+    color var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease);
+  white-space: nowrap;
+}
+
+.aw-nav-btn:hover {
+  color: var(--text-h);
+  background: var(--border);
+}
+
+.aw-nav-btn--logout:hover {
+  color: #ef4444;
+}
+
+/* ── Main content ─────────────────────────────────────────────── */
+
+.aw-main {
+  flex: 1;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ── Write form ───────────────────────────────────────────────── */
+
+.aw-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aw-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.aw-field label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.aw-field input,
+.aw-field textarea,
+.aw-tag-row input,
+.aw-tag-row select {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-h);
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  padding: 10px 14px;
+  transition: border-color var(--duration-fast) var(--ease);
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.aw-field input:focus,
+.aw-field textarea:focus,
+.aw-tag-row input:focus {
+  border-color: var(--primary);
+}
+
+.aw-field textarea {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  resize: vertical;
+  min-height: 480px;
+}
+
+.aw-field-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+}
+
+/* ── Tag input ────────────────────────────────────────────────── */
+
+.aw-tag-row {
+  display: flex;
+  gap: 8px;
+}
+
+.aw-tag-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.aw-tag-row select {
+  width: auto;
+  flex-shrink: 0;
+  padding-inline: 8px;
+}
+
+.aw-tag-add-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.82rem;
+  padding: 0 14px;
+  white-space: nowrap;
+  transition:
+    border-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+.aw-tag-add-btn:hover {
+  border-color: var(--primary-border);
+  color: var(--primary);
+}
+
+.aw-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.aw-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--mono);
+  font-size: 0.67rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+.aw-tag-pill--general {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+}
+
+.aw-tag-pill--project {
+  border: 1px solid var(--primary-border);
+  background: var(--primary-bg);
+  color: var(--primary);
+}
+
+.aw-tag-pill button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font-size: 1em;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.6;
+  transition: opacity var(--duration-fast) var(--ease);
+}
+
+.aw-tag-pill button:hover {
+  opacity: 1;
+}
+
+/* ── Form actions ─────────────────────────────────────────────── */
+
+.aw-error {
+  font-size: 0.82rem;
+  color: #ef4444;
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.07);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  margin: 0;
+}
+
+.aw-form-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+
+.aw-btn-publish {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 28px;
+  background: var(--primary);
+  border: none;
+  border-radius: 10px;
+  color: var(--primary-contrast, #fff);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--duration-fast) var(--ease);
+}
+
+.aw-btn-publish:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.aw-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 24px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease);
+}
+
+.aw-btn-outline:hover {
+  border-color: var(--primary-border);
+  background: var(--primary-bg);
+}
+
+/* ── Saved confirmation ───────────────────────────────────────── */
+
+.aw-saved {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 80px 0;
+}
+
+.aw-saved-check {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin: 0;
+  line-height: 1;
+}
+
+.aw-saved-msg {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.aw-saved-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* ── Login screen ─────────────────────────────────────────────── */
+
+.aw-login-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  background: var(--bg);
+}
+
+.aw-login-card {
+  width: min(380px, 90vw);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 32px;
+}
+
+.aw-login-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0 0 28px;
+}
+
+.aw-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.aw-login-form input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-h);
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  padding: 12px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color var(--duration-fast) var(--ease);
+  outline: none;
+}
+
+.aw-login-form input:focus {
+  border-color: var(--primary);
+}
+
+.aw-login-form .aw-btn-publish {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.aw-login-error {
+  font-size: 0.8rem;
+  color: #ef4444;
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Mobile ───────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .aw-topbar {
+    padding: 0 16px;
+  }
+
+  .aw-main {
+    padding: 28px 16px 60px;
+  }
+
+  .aw-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .aw-tag-row {
+    flex-wrap: wrap;
+  }
+
+  .aw-tag-row input {
+    width: 100%;
+  }
+
+  .aw-saved-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .aw-btn-outline,
+  .aw-btn-publish {
+    width: 100%;
+  }
+}
