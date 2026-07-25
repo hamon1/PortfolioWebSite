@@ -1,31 +1,162 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { blogApi } from '../../api/blog.api';
-import type { PostRequest, TagItem, TagType } from '../../api/blog.api';
+import type { Post, PostSummary, PostRequest, TagItem, TagType } from '../../api/blog.api';
 import { useBlogAuth } from '../../hooks/useBlogAuth';
 import '../../styles/adminWrite.css';
 
 const SESSION_KEY = 'blog_admin_token';
 
-// ── Write form ───────────────────────────────────────────────────
+type Mode =
+  | { type: 'list' }
+  | { type: 'create' }
+  | { type: 'edit'; post: Post };
+
+// ── Post list ────────────────────────────────────────────────────
+
+interface PostListProps {
+  token: string;
+  onEdit: (post: Post) => void;
+  onNew: () => void;
+}
+
+function PostList({ token, onEdit, onNew }: PostListProps) {
+  const [posts, setPosts] = useState<PostSummary[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadingEdit, setLoadingEdit] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+
+  const fetchPosts = useCallback((p: number) => {
+    setLoading(true);
+    setError(null);
+    blogApi.list(p, 20)
+      .then(data => {
+        setPosts(data.content);
+        setTotalPages(data.totalPages);
+        setLoading(false);
+      })
+      .catch(e => {
+        setError(e instanceof Error ? e.message : '불러오기 실패');
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => { fetchPosts(page); }, [fetchPosts, page]);
+
+  const handleEdit = async (post: PostSummary) => {
+    setLoadingEdit(post.id);
+    try {
+      const full = await blogApi.getBySlug(post.slug);
+      onEdit(full);
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '포스트를 불러올 수 없습니다.');
+    } finally {
+      setLoadingEdit(null);
+    }
+  };
+
+  const handleDelete = async (post: PostSummary) => {
+    if (!window.confirm(`"${post.title}" 포스트를 삭제하시겠습니까?`)) return;
+    try {
+      await blogApi.delete(post.id, token);
+      setPosts(prev => prev.filter(p => p.id !== post.id));
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '삭제에 실패했습니다.');
+    }
+  };
+
+  return (
+    <div className="aw-list-root">
+      <div className="aw-list-header">
+        <span className="aw-list-count">
+          {loading ? '...' : `${posts.length}개의 포스트`}
+        </span>
+        <button className="aw-btn-publish" onClick={onNew}>+ 새 글 작성</button>
+      </div>
+
+      {loading ? (
+        <div className="aw-state-box"><div className="aw-spinner" /></div>
+      ) : error ? (
+        <div className="aw-state-box aw-state-box--error">{error}</div>
+      ) : posts.length === 0 ? (
+        <div className="aw-state-box">아직 작성된 글이 없습니다.</div>
+      ) : (
+        <ul className="aw-post-list">
+          {posts.map(post => (
+            <li key={post.id} className="aw-post-item">
+              <div className="aw-post-item-info">
+                <time className="aw-post-item-date">{post.date}</time>
+                <span className="aw-post-item-title">{post.title}</span>
+                {post.tags.length > 0 && (
+                  <div className="aw-post-item-tags">
+                    {post.tags.map(t => (
+                      <span key={t.name} className={`aw-tag-pill aw-tag-pill--${t.type.toLowerCase()}`}>
+                        {t.name}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="aw-post-item-actions">
+                <button
+                  className="aw-btn-edit"
+                  onClick={() => handleEdit(post)}
+                  disabled={loadingEdit === post.id}
+                >
+                  {loadingEdit === post.id ? '...' : '수정'}
+                </button>
+                <button
+                  className="aw-btn-delete"
+                  onClick={() => handleDelete(post)}
+                >
+                  삭제
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {totalPages > 1 && (
+        <div className="aw-list-pagination">
+          <button className="aw-btn-outline" disabled={page === 0} onClick={() => setPage(p => p - 1)}>
+            ← 이전
+          </button>
+          <span className="aw-pagination-info">{page + 1} / {totalPages}</span>
+          <button className="aw-btn-outline" disabled={page >= totalPages - 1} onClick={() => setPage(p => p + 1)}>
+            다음 →
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Write / Edit form ────────────────────────────────────────────
 
 interface WriteFormProps {
   token: string;
+  initial?: Post;
   onSaved: () => void;
+  onCancel: () => void;
 }
 
-function WriteForm({ token, onSaved }: WriteFormProps) {
+function WriteForm({ token, initial, onSaved, onCancel }: WriteFormProps) {
   const today = new Date().toISOString().slice(0, 10);
-  const [title, setTitle] = useState('');
-  const [slug, setSlug] = useState('');
-  const [date, setDate] = useState(today);
-  const [content, setContent] = useState('');
-  const [projectRef, setProjectRef] = useState('');
-  const [tags, setTags] = useState<TagItem[]>([]);
+  const [title, setTitle] = useState(initial?.title ?? '');
+  const [slug, setSlug] = useState(initial?.slug ?? '');
+  const [date, setDate] = useState(initial?.date ?? today);
+  const [content, setContent] = useState(initial?.content ?? '');
+  const [projectRef, setProjectRef] = useState(initial?.projectRef ?? '');
+  const [tags, setTags] = useState<TagItem[]>(initial?.tags ?? []);
   const [tagInput, setTagInput] = useState('');
   const [tagType, setTagType] = useState<TagType>('GENERAL');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const isEdit = !!initial;
 
   const toSlug = (t: string) =>
     t.toLowerCase()
@@ -54,7 +185,11 @@ function WriteForm({ token, onSaved }: WriteFormProps) {
         projectRef: projectRef.trim() || null,
         tags,
       };
-      await blogApi.create(req, token);
+      if (isEdit) {
+        await blogApi.update(initial.id, req, token);
+      } else {
+        await blogApi.create(req, token);
+      }
       onSaved();
     } catch (err) {
       setError(err instanceof Error ? err.message : '저장에 실패했습니다.');
@@ -71,7 +206,10 @@ function WriteForm({ token, onSaved }: WriteFormProps) {
           id="aw-title"
           type="text"
           value={title}
-          onChange={e => { setTitle(e.target.value); setSlug(toSlug(e.target.value)); }}
+          onChange={e => {
+            setTitle(e.target.value);
+            if (!isEdit) setSlug(toSlug(e.target.value));
+          }}
           placeholder="포스트 제목"
           autoFocus
           required
@@ -160,8 +298,11 @@ function WriteForm({ token, onSaved }: WriteFormProps) {
       {error && <p className="aw-error">{error}</p>}
 
       <div className="aw-form-footer">
+        <button type="button" className="aw-btn-outline" onClick={onCancel}>
+          ← 목록으로
+        </button>
         <button type="submit" className="aw-btn-publish" disabled={submitting}>
-          {submitting ? '저장 중...' : '발행하기'}
+          {submitting ? '저장 중...' : isEdit ? '수정 완료' : '발행하기'}
         </button>
       </div>
     </form>
@@ -171,18 +312,19 @@ function WriteForm({ token, onSaved }: WriteFormProps) {
 // ── Saved confirmation ───────────────────────────────────────────
 
 interface SavedConfirmProps {
+  isEdit: boolean;
   onNew: () => void;
-  onBack: () => void;
+  onList: () => void;
 }
 
-function SavedConfirm({ onNew, onBack }: SavedConfirmProps) {
+function SavedConfirm({ isEdit, onNew, onList }: SavedConfirmProps) {
   return (
     <div className="aw-saved">
       <p className="aw-saved-check">✓</p>
-      <p className="aw-saved-msg">발행 완료</p>
+      <p className="aw-saved-msg">{isEdit ? '수정 완료' : '발행 완료'}</p>
       <div className="aw-saved-actions">
-        <button className="aw-btn-outline" onClick={onNew}>새 글 작성</button>
-        <button className="aw-btn-publish" onClick={onBack}>블로그로 돌아가기</button>
+        {!isEdit && <button className="aw-btn-outline" onClick={onNew}>새 글 작성</button>}
+        <button className="aw-btn-publish" onClick={onList}>목록으로</button>
       </div>
     </div>
   );
@@ -247,9 +389,9 @@ function LoginScreen({ onLogin }: LoginScreenProps) {
 function AdminWrite() {
   const navigate = useNavigate();
   const { token, isAdmin, login } = useBlogAuth();
-  const [saved, setSaved] = useState(false);
+  const [mode, setMode] = useState<Mode>({ type: 'list' });
+  const [savedMode, setSavedMode] = useState<'create' | 'edit' | null>(null);
 
-  // Logout on navigation away (unmount) and tab close
   useEffect(() => {
     const clear = () => sessionStorage.removeItem(SESSION_KEY);
     window.addEventListener('beforeunload', clear);
@@ -259,26 +401,67 @@ function AdminWrite() {
     };
   }, []);
 
-  const handleBack = () => navigate('/blog');
+  const handleBack = useCallback(() => navigate('/blog'), [navigate]);
+  const goList = useCallback(() => setMode({ type: 'list' }), []);
 
-  if (!isAdmin) {
-    return <LoginScreen onLogin={login} />;
+  const modeTitle =
+    mode.type === 'create' ? '새 글 작성' :
+    mode.type === 'edit'   ? '글 수정' :
+                             '포스트 관리';
+
+  if (!isAdmin) return <LoginScreen onLogin={login} />;
+
+  if (savedMode) {
+    return (
+      <div className="aw-root">
+        <header className="aw-topbar">
+          <button className="aw-nav-btn" onClick={handleBack}>← 블로그</button>
+          <span className="aw-topbar-title">Admin</span>
+          <button className="aw-nav-btn aw-nav-btn--logout" onClick={handleBack}>로그아웃</button>
+        </header>
+        <main className="aw-main">
+          <SavedConfirm
+            isEdit={savedMode === 'edit'}
+            onNew={() => { setSavedMode(null); setMode({ type: 'create' }); }}
+            onList={() => { setSavedMode(null); goList(); }}
+          />
+        </main>
+      </div>
+    );
   }
 
   return (
     <div className="aw-root">
       <header className="aw-topbar">
-        <button className="aw-nav-btn" onClick={handleBack}>← 블로그</button>
-        <span className="aw-topbar-title">새 글 작성</span>
-        <button className="aw-nav-btn aw-nav-btn--logout" onClick={handleBack}>
-          로그아웃
+        <button className="aw-nav-btn" onClick={mode.type === 'list' ? handleBack : goList}>
+          {mode.type === 'list' ? '← 블로그' : '← 목록'}
         </button>
+        <span className="aw-topbar-title">{modeTitle}</span>
+        <button className="aw-nav-btn aw-nav-btn--logout" onClick={handleBack}>로그아웃</button>
       </header>
       <main className="aw-main">
-        {saved
-          ? <SavedConfirm onNew={() => setSaved(false)} onBack={handleBack} />
-          : <WriteForm token={token!} onSaved={() => setSaved(true)} />
-        }
+        {mode.type === 'list' && (
+          <PostList
+            token={token!}
+            onEdit={post => setMode({ type: 'edit', post })}
+            onNew={() => setMode({ type: 'create' })}
+          />
+        )}
+        {mode.type === 'create' && (
+          <WriteForm
+            token={token!}
+            onSaved={() => setSavedMode('create')}
+            onCancel={goList}
+          />
+        )}
+        {mode.type === 'edit' && (
+          <WriteForm
+            token={token!}
+            initial={mode.post}
+            onSaved={() => setSavedMode('edit')}
+            onCancel={goList}
+          />
+        )}
       </main>
     </div>
   );
