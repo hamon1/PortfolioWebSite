@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Original images (WebP 변환 후 원본 제외)
+public/images/**/*.png
+public/images/**/*.jpg
+public/images/**/*.jpeg
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

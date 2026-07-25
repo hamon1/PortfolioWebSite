@@ -8,10 +8,10 @@
         "painPoint": "일기장은 공유가 불가능하고 SNS는 공개 범위 조절이 어려워 '내 공간에 기록하면서 친구와 연결'하는 중간 지점이 없음",
         "goal": "내 공간을 중심으로 하되 친구와 선택적으로 연결할 수 있는 아바타 기반 감정 기록 플랫폼을 구현"
     },
-    "thumbnail": "images/projects/FeatherTales/Main.png",
+    "thumbnail": "images/projects/FeatherTales/Main.webp",
     "period": "2025.04 ~ 2025.07",
     "teamSize": "1인",
-    "role": "Frontend / FullStack",
+    "role": "Frontend / Backend",
     "techStack": [
         {
             "name": "React",
@@ -19,7 +19,7 @@
         },
         {
             "name": "Node.js",
-            "reason": "팀원이 Node.js에 익숙하고, 프론트와 백엔드 언어를 통일해 맥락 전환 비용을 줄이기 위해"
+            "reason": "프론트와 백엔드 언어를 통일해 맥락 전환 비용을 줄이기 위해"
         },
         {
             "name": "MongoDB",
@@ -31,7 +31,7 @@
         },
         {
             "name": "JavaScript",
-            "reason": "프론트와 백엔드 언어를 통일해 팀 간 코드 리뷰 효율을 높이기 위해"
+            "reason": "프론트와 백엔드 언어 통일"
         }
     ],
     "githubUrl": "https://github.com/example/feathertales",
@@ -41,12 +41,6 @@
             "title": "인터랙티브 홈 환경",
             "description": "좌표 기반 아바타 이동 및 공간 인터랙션 지원",
             "intent": "피드 스크롤 대신 내 공간을 걸어다니는 감각으로 기록 동기를 높이기 위해 공간 중심 UX를 핵심으로 설계",
-            "priority": "core"
-        },
-        {
-            "title": "아바타 커스터마이징",
-            "description": "다양한 옵션 조합을 통한 사용자 개성 표현",
-            "intent": "실제 SNS 프로필 사진 대신 아바타로 정체성을 표현해 심리적 노출 부담을 낮추기 위해",
             "priority": "core"
         },
         {
@@ -72,12 +66,12 @@
         {
             "title": "로그인 화면",
             "type": "image",
-            "src": "images/projects/FeatherTales/Login.png"
+            "src": "images/projects/FeatherTales/Login.webp"
         },
         {
             "title": "메인 인터랙션 화면",
             "type": "image",
-            "src": "images/projects/FeatherTales/Main.png"
+            "src": "images/projects/FeatherTales/Main.webp"
         },
         {
             "title": "아바타 이동 시연",
@@ -87,42 +81,7 @@
         {
             "title": "책방 Drag & Drop",
             "type": "image",
-            "src": "images/projects/FeatherTales/Doc.png"
-        }
-    ],
-    "devLogs": [
-        {
-            "date": "2025-05-11",
-            "title": "좌표 기반 이동 구조 구현",
-            "summary": "클릭 위치 기반 아바타 이동 처리",
-            "content": "마우스 클릭 좌표를 기준으로 캐릭터 위치 상태를 갱신하고 이동 애니메이션을 연결",
-            "tags": [
-                "react",
-                "interaction",
-                "ui"
-            ]
-        },
-        {
-            "date": "2025-05-26",
-            "title": "아바타 상태 구조 개선",
-            "summary": "커스터마이징 상태 데이터 정리",
-            "content": "아바타 옵션 데이터를 JSON 기반 구조로 통합하여 유지보수성과 확장성을 개선",
-            "tags": [
-                "state",
-                "avatar",
-                "mongodb"
-            ]
-        },
-        {
-            "date": "2025-06-08",
-            "title": "책방 Drag & Drop 구현",
-            "summary": "사용자 경험 중심 인터랙션 추가",
-            "content": "Drag 이벤트 기반 순서 변경 후 DB 순서를 동기화하는 구조 구현",
-            "tags": [
-                "dragdrop",
-                "crud",
-                "ux"
-            ]
+            "src": "images/projects/FeatherTales/Doc.webp"
         }
     ],
     "troubles": [
@@ -158,9 +117,8 @@
     "validation": {
         "deployed": false,
         "userCount": "지인 5명 베타 사용",
-        "feedback": "공간을 직접 걷는 UX가 SNS와 달라서 신선하다는 반응, 책방 정렬 기능을 자주 활용",
         "learnings": "모바일 환경에서 아바타 이동 조작이 불편하다는 피드백 → 터치 기반 이동 UX 개선 필요 확인"
     },
-    "retrospective": "공간 기반 UX와 상태 중심 인터랙션 설계를 직접 구현하며 사용자 경험 중심 프론트엔드 구조와 데이터 흐름 설계를 깊게 경험함",
+    "retrospective": "공간 기반 UX와 상태 중심 인터랙션 설계를 직접 구현하며 사용자 경험 중심 프론트엔드 구조와 데이터 흐름, 백엔드 설계까지 경험함",
     "featured": true
 }

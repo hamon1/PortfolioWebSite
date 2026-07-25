@@ -8,7 +8,7 @@
         "painPoint": "타이머를 확인하려고 화면을 전환하는 순간 다른 탭이나 알림에 시선을 빼앗기는 악순환이 발생",
         "goal": "작업 화면 위에 항상 떠 있으면서도 방해가 되지 않는 최소한의 집중 타이머를 데스크톱 환경에서 구현"
     },
-    "thumbnail": "images/projects/Focat/Focat_full.png",
+    "thumbnail": "images/projects/Focat/Focat_full.webp",
     "period": "2026.03 ~ 2026.04",
     "teamSize": "1인",
     "role": "Frontend / Desktop App",
@@ -35,8 +35,8 @@
     "features": [
         {
             "title": "집중 타이머 시스템",
-            "description": "Start / Pause / Stop / Reset 상태 기반 타이머 제어",
-            "intent": "집중 상태를 명확한 4단계로 분리해 사용자가 현재 상태를 직관적으로 인식하도록 설계",
+            "description": "Start / Pause / Reset 상태 기반 타이머 제어",
+            "intent": "집중 상태를 명확한 3단계로 분리해 사용자가 현재 상태를 직관적으로 인식하도록 설계",
             "priority": "core"
         },
         {
@@ -68,12 +68,12 @@
         {
             "title": "타이머 메인 화면",
             "type": "image",
-            "src": "images/projects/Focat/Focat_full.png"
+            "src": "images/projects/Focat/Focat_full.webp"
         },
         {
             "title": "미니 모드 시연",
             "type": "gif",
-            "src": "images/projects/Focat/Focat_mini.png"
+            "src": "images/projects/Focat/Focat_mini.webp"
         },
         {
             "title": "밈 팝업 인터랙션",
@@ -81,47 +81,7 @@
             "src": "images/projects/focus-timer/meme-popup.gif"
         }
     ],
-    "devLogs": [
-        {
-            "date": "2026-04-10",
-            "title": "IPC 기반 구조 개선",
-            "summary": "Renderer와 Main 책임 분리",
-            "content": "contextBridge를 통해 Renderer에 필요한 API만 안전하게 노출",
-            "tags": [
-                "electron",
-                "ipc",
-                "architecture"
-            ]
-        },
-        {
-            "date": "2026-04-18",
-            "title": "UI 모드 전환 구조 개선",
-            "summary": "CSS class 기반 상태 관리 적용",
-            "content": "mini / timer / full 상태를 body class로 제어하여 UI와 로직을 분리",
-            "tags": [
-                "css",
-                "ui",
-                "state"
-            ]
-        },
-        {
-            "date": "2026-04-27",
-            "title": "미니 모드 기능 확장",
-            "summary": "미니모드에서도 타이머 조작 가능",
-            "content": "사용자가 작은 창 상태에서도 Start / Pause 기능을 사용할 수 있도록 개선",
-            "tags": [
-                "ux",
-                "electron"
-            ]
-        }
-    ],
     "troubles": [
-        {
-            "problem": "Renderer Process에서 electron-store 직접 사용 시 require is not defined 오류 발생",
-            "cause": "Renderer Process는 브라우저 환경으로 실행되어 Node.js API에 직접 접근할 수 없음",
-            "solution": "Main Process에서 데이터 저장을 처리하고 Preload의 contextBridge와 IPC 통신 구조로 재설계",
-            "result": "UI와 데이터 저장 로직 분리 및 Electron 보안 모델 준수"
-        },
         {
             "problem": "Goal마다 독립적인 타이머를 설계하면서 상태 관리 복잡성 증가",
             "cause": "다수의 타이머가 존재하면 세션 관리와 통계 집계 구조가 비효율적이었음",
@@ -147,7 +107,7 @@
             "impact": "타이머를 별도 창으로 분리하고 always-on-top + 미니 모드를 핵심 기능으로 우선 설계"
         },
         {
-            "observation": "뽀모도로 방식이 잘 맞지 않는 사람은 고정 간격보다 자유로운 목표 기반 집중을 선호",
+            "observation": "타이머 방식이 잘 맞지 않는 사람은 고정 간격보다 자유로운 목표 기반 집중을 선호",
             "impact": "강제 휴식 없이 Goal → Task 구조로 사용자가 직접 집중 단위를 정의하도록 설계"
         }
     ],

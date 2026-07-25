@@ -8,7 +8,7 @@
         "painPoint": "일정이 업데이트될 때마다 전체 공유가 필요해 버전 불일치와 혼선이 잦음",
         "goal": "참여자 전원이 같은 화면에서 동시에 일정을 조율할 수 있는 단일 협업 공간을 만들 것"
     },
-    "thumbnail": "images/projects/TravelBUDDY/Main.png",
+    "thumbnail": "images/projects/TravelBUDDY/Main.webp",
     "period": "2024.04 ~ 2024.11",
     "teamSize": "2인",
     "role": "Full",
@@ -50,39 +50,27 @@
         {
             "title": "메인 화면",
             "type": "image",
-            "src": "images/projects/TravelBUDDY/Main.png"
+            "src": "images/projects/TravelBUDDY/Main.webp"
         },
         {
             "title": "지도 화면",
             "type": "image",
-            "src": "images/projects/TravelBUDDY/map.png"
+            "src": "images/projects/TravelBUDDY/map.webp"
         },
         {
             "title": "일정 생성 시연",
             "type": "image",
-            "src": "images/projects/TravelBUDDY/Trip.png"
+            "src": "images/projects/TravelBUDDY/Trip.webp"
         },
         {
             "title": "채팅 화면",
             "type": "image",
-            "src": "images/projects/TravelBUDDY/Chat.png"
+            "src": "images/projects/TravelBUDDY/Chat.webp"
         },
         {
             "title": "유저 프로필 화면",
             "type": "image",
-            "src": "images/projects/TravelBUDDY/UserProfile.png"
-        }
-    ],
-    "devLogs": [
-        {
-            "date": "2025-02-12",
-            "title": "상태 관리 구조 개선",
-            "summary": "props drilling 제거",
-            "content": "Zustand를 이용해 전역 상태 구조로 변경",
-            "tags": [
-                "zustand",
-                "react"
-            ]
+            "src": "images/projects/TravelBUDDY/UserProfile.webp"
         }
     ],
     "troubles": [
@@ -91,6 +79,24 @@
             "cause": "불필요한 전체 리스트 re-render",
             "solution": "memo 및 selector 기반 최적화",
             "result": "체감 성능 개선"
+        },
+        {
+            "problem": "여행지 데이터 증가에 따른 리스트 스크롤 성능 저하",
+            "cause": "기존 FlatList의 기본 옵션으로 인한 불필요한 컴포넌트 렌더링",
+            "solution": "OptimizedFlatList 전환 및 초기 렌더링 수·윈도우 크기 조정",
+            "result": "리스트 스크롤 성능 및 불필요한 렌더링 개선"
+        },
+        {
+            "problem": "초대된 동행자의 일정 무단 수정 위험",
+            "cause": "사용자 역할별(소유자 vs 동행자) 접근 권한 구분 부재",
+            "solution": "일정 소유자와 초대 사용자 간 권한 분리 및 읽기 전용 모드 설계",
+            "result": "무단 수정 방지 및 데이터 보안성 강화"
+        },
+        {
+            "problem": "팀원과의 협업 중 충돌 문제",
+            "cause": "의사소통 및 의견 조율 부족",
+            "solution": "notin, figma를 통한 소통 유도. 적극적의 의사소통 시도",
+            "result": "프로젝트 수정 사항, 버그 확인, 기능 추가 등 진행도를 확인하기 수월해짐"
         }
     ],
     "domainInsights": [
@@ -101,9 +107,7 @@
     ],
     "validation": {
         "deployed": false,
-        "userCount": "지인 2팀 (6명) 실사용",
-        "feedback": "카카오톡 없이도 일정 조율이 된다는 반응, 지도에서 장소 순서 바꾸는 기능을 자주 사용",
-        "learnings": "모바일에서 지도 터치 조작이 불편하다는 피드백 → 핀치 줌·드래그 UX 개선 필요 확인"
+        "learnings": "기획부터 디자인, 구현까지 전 사이클 경험"
     },
     "retrospective": "협업 구조와 상태 설계 경험을 얻음",
     "featured": true
