@@ -16,6 +16,7 @@ dist-ssr
 public/images/**/*.png
 public/images/**/*.jpg
 public/images/**/*.jpeg
+!public/og.png
 
 # Editor directories and files
 .vscode/*
