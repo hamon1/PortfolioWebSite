@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { blogApi, PostSummary, TagItem, PostRequest } from '../../api/blog.api';
+import { blogApi } from '../../api/blog.api';
+import type { PostSummary, TagItem, PostRequest } from '../../api/blog.api';
 import { useBlogAuth } from '../../hooks/useBlogAuth';
 import PostEditor from './components/PostEditor';
 import LoginModal from './components/LoginModal';

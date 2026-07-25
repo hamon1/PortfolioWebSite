@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Post, PostRequest, TagItem, TagType } from '../../../api/blog.api';
+import type { Post, PostRequest, TagItem, TagType } from '../../../api/blog.api';
 import '../../../styles/blog.css';
 
 interface PostEditorProps {
