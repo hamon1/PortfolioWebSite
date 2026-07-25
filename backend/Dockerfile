@@ -1,11 +1,11 @@
-# ── Build stage ────────────────────────────────────────
-FROM eclipse-temurin:21-jdk-alpine AS builder
+# ── Build stage (Gradle 8.7 + JDK 21 내장 이미지) ─────
+FROM gradle:8.7-jdk21-alpine AS builder
 WORKDIR /workspace
 
 COPY . .
-RUN chmod +x gradlew && ./gradlew bootJar -x test --no-daemon
+RUN gradle bootJar -x test --no-daemon
 
-# ── Runtime stage ───────────────────────────────────────
+# ── Runtime stage (JRE만 포함, 경량) ───────────────────
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
