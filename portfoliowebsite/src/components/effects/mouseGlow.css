@@ -1,0 +1,62 @@
+.mouse-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 480px;
+  height: 480px;
+  margin: -240px 0 0 -240px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(79, 70, 229, 0.13) 0%,
+    rgba(99, 102, 241, 0.06) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+}
+
+.mouse-face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.mouse-face__eyes {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.mouse-face__eye {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(199, 210, 254, 0.75);
+  box-shadow: inset 0 0 8px rgba(19, 23, 52, 0.2);
+  transform-origin: center;
+  animation: blink 3.8s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  96%           { transform: scaleY(0.08); }
+  98%           { transform: scaleY(1); }
+}
+
+.mouse-face__mouth {
+  width: 24px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(199, 210, 254, 0.55);
+  box-shadow: inset 0 0 8px rgba(19, 23, 52, 0.2);
+}
