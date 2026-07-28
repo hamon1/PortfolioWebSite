@@ -22,6 +22,13 @@ function ExpandedProject({
     const [showAllCommits, setShowAllCommits] =
     useState(false);
 
+    const sortedTroubles = [...project.troubles].sort((a, b) => {
+        if (!a.date && !b.date) return 0;
+        if (!a.date) return 1;
+        if (!b.date) return -1;
+        return a.date.localeCompare(b.date);
+    });
+
     return (
         <section className="expanded-project">
             <Link to="/projects" className="back-link">
@@ -71,6 +78,16 @@ function ExpandedProject({
                                 rel="noreferrer"
                             >
                                 GitHub
+                            </a>
+                        )}
+
+                        {project.backendGithubUrl && (
+                            <a
+                                href={project.backendGithubUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Backend
                             </a>
                         )}
 
@@ -206,7 +223,7 @@ function ExpandedProject({
                 <h3>Trouble Shooting</h3>
 
                 <div className="trouble-list">
-                    {project.troubles.map((trouble) => (
+                    {sortedTroubles.map((trouble) => (
                         <TroubleCard
                             key={trouble.problem}
                             trouble={trouble}

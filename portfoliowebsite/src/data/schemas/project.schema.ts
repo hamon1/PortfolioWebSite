@@ -51,6 +51,8 @@ export const ProjectSchema = z.object({
 
     githubUrl: z.string().url().optional(),
 
+    backendGithubUrl: z.string().url().optional(),
+
     deployUrl: z.string().url().or(z.literal("")),
 
     figmaUrl: z.string().url().optional(),

@@ -15,6 +15,8 @@ export const TroubleSchema = z.object({
 
   commitHash: z.string().optional(),
 
+  repo: z.string().optional(),
+
   codeSnippet: z.string().optional(),
 
   lesson: z.string().optional(),

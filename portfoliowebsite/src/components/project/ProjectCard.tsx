@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaGithub, FaFigma, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub, FaFigma, FaExternalLinkAlt, FaServer } from 'react-icons/fa';
 
 import { type Project } from "../../data/schemas/project.schema";
 import { assetUrl } from "../../utils/assetUrl";
@@ -43,6 +43,17 @@ function ProjectCard({ project }: Props) {
                         aria-label="GitHub"
                     >
                         <FaGithub />
+                    </a>
+                )}
+
+                {project.backendGithubUrl && (
+                    <a
+                        href={project.backendGithubUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label="Backend repository"
+                    >
+                        <FaServer />
                     </a>
                 )}
 

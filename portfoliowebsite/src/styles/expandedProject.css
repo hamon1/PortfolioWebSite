@@ -299,6 +299,10 @@
     text-decoration: none;
 }
 
+.trouble-commit-repo {
+    color: var(--text-muted);
+}
+
 .trouble-commit-link:hover {
     text-decoration: underline;
 }

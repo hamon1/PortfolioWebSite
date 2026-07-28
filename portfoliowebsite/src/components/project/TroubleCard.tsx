@@ -29,11 +29,14 @@ function TroubleCard({ trouble, githubRepo }: Props) {
 
                     {trouble.commitHash && (
                         <a
-                            href={`https://github.com/${githubRepo}/commit/${trouble.commitHash}`}
+                            href={`https://github.com/${trouble.repo ?? githubRepo}/commit/${trouble.commitHash}`}
                             target="_blank"
                             rel="noreferrer"
                             className="trouble-commit-link"
                         >
+                            {trouble.repo && (
+                                <span className="trouble-commit-repo">{trouble.repo.split('/')[1]}@</span>
+                            )}
                             {trouble.commitHash.slice(0, 7)}
                         </a>
                     )}
