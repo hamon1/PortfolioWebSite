@@ -8,7 +8,7 @@
         "painPoint": "타이머를 확인하려고 화면을 전환하는 순간 다른 탭이나 알림에 시선을 빼앗기는 악순환이 발생",
         "goal": "작업 화면 위에 항상 떠 있으면서도 방해가 되지 않는 최소한의 집중 타이머를 데스크톱 환경에서 구현"
     },
-    "thumbnail": "images/projects/Focat/Focat_full.webp",
+    "thumbnail": "/images/projects/Focat/Focat_full.webp",
     "period": "2026.03 ~ 2026.04",
     "teamSize": "1인",
     "role": "Frontend / Desktop App",
@@ -68,17 +68,17 @@
         {
             "title": "타이머 메인 화면",
             "type": "image",
-            "src": "images/projects/Focat/Focat_full.webp"
+            "src": "/images/projects/Focat/Focat_full.webp"
         },
         {
             "title": "미니 모드 시연",
             "type": "gif",
-            "src": "images/projects/Focat/Focat_mini.webp"
+            "src": "/images/projects/Focat/Focat_mini.webp"
         },
         {
             "title": "밈 팝업 인터랙션",
             "type": "gif",
-            "src": "images/projects/focus-timer/meme-popup.gif"
+            "src": "/images/projects/focus-timer/meme-popup.gif"
         }
     ],
     "troubles": [

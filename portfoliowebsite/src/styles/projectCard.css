@@ -1,6 +1,6 @@
 .project-card {
     width: 280px;
-    height: 360px;
+    min-height: 400px;
     padding: 8px;
     background: var(--surface);
     border: 1px solid var(--border);
@@ -8,7 +8,6 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    cursor: pointer;
     transition:
         transform var(--duration-fast) var(--ease),
         border-color var(--duration-fast) var(--ease),
@@ -29,22 +28,27 @@
     border-bottom: 1px solid var(--border);
 }
 
-.project-card h3,
-.project-card p,
-.project-card button {
+.project-card > *:not(img) {
     margin-left: 14px;
     margin-right: 14px;
 }
 
 .project-card h3 {
     margin-top: 14px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     font-size: 1rem;
     font-weight: 700;
     color: var(--text-h);
 }
 
-.project-card p {
+.project-card-meta {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.project-card > p:not(.project-card-meta) {
     flex: 1;
     font-size: 0.85rem;
     line-height: 1.5;
@@ -55,22 +59,69 @@
     -webkit-box-orient: vertical;
 }
 
-.project-card button {
+.project-card-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.project-card-chip {
+    font-family: var(--mono);
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--primary-bg);
+    border: 1px solid var(--primary-border);
+    color: var(--primary);
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.project-card-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.project-card-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition:
+        border-color var(--duration-fast) var(--ease),
+        color var(--duration-fast) var(--ease);
+}
+
+.project-card-links a:hover {
+    border-color: var(--primary-border);
+    color: var(--primary);
+}
+
+.project-card-detail-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
     margin-bottom: 14px;
     height: 38px;
-    border: none;
     border-radius: 10px;
     background: var(--primary);
     color: white;
     font-size: 0.85rem;
     font-weight: 600;
-    cursor: pointer;
+    text-decoration: none;
     transition:
         background var(--duration-fast) var(--ease),
         transform var(--duration-fast) var(--ease);
 }
 
-.project-card button:hover {
+.project-card-detail-link:hover {
     background: var(--primary-hover);
     transform: translateY(-1px);
+    color: white;
 }

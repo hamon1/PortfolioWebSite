@@ -1,5 +1,5 @@
 import About from "../About/About";
-import Projects from "../Projects/Projects";
+import FeaturedProjects from "./FeaturedProjects";
 import MouseGlow from "../../components/effects/MouseGlow";
 // import Demo from "../Demo/Demo";
 // import DevLog from "../DevLog/DevLog";
@@ -10,7 +10,7 @@ return (
         <MouseGlow />
         <About/>
 
-        <Projects/>
+        <FeaturedProjects/>
 
         {/* <Demo/> */}
 

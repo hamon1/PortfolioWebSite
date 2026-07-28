@@ -10,7 +10,9 @@
     z-index: 2;
 }
 
-.expanded-project > button {
+.back-link {
+    display: inline-flex;
+    align-items: center;
     height: 40px;
     padding: 0 18px;
     border: none;
@@ -19,12 +21,13 @@
     color: white;
     font-size: 0.9rem;
     font-weight: 600;
-    cursor: pointer;
+    text-decoration: none;
     transition: background var(--duration-fast) var(--ease);
 }
 
-.expanded-project > button:hover {
+.back-link:hover {
     background: var(--primary-hover);
+    color: white;
 }
 
 .project-hero {
@@ -249,6 +252,92 @@
     margin-top: 8px;
     color: var(--text);
     line-height: 1.7;
+}
+
+.trouble-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.trouble-status {
+    display: inline-flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 12px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.trouble-status--resolved {
+    background: var(--status-resolved-bg);
+    color: var(--status-resolved);
+}
+
+.trouble-status--partial {
+    background: var(--status-partial-bg);
+    color: var(--status-partial);
+}
+
+.trouble-status--unresolved {
+    background: var(--status-unresolved-bg);
+    color: var(--status-unresolved);
+}
+
+.trouble-date {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.trouble-commit-link {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.trouble-commit-link:hover {
+    text-decoration: underline;
+}
+
+.trouble-code {
+    margin: 0;
+    padding: 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.trouble-code code {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: var(--text);
+    white-space: pre;
+}
+
+.trouble-callout {
+    padding: 14px 16px;
+    border-radius: 12px;
+    border-left: 3px solid var(--primary);
+    background: var(--primary-bg);
+}
+
+.trouble-callout p {
+    margin-top: 4px;
+}
+
+.trouble-callout--caveat {
+    border-left-color: var(--status-partial);
+    background: var(--status-partial-bg);
+}
+
+.trouble-callout--caveat strong {
+    color: var(--status-partial);
 }
 
 .block-header {

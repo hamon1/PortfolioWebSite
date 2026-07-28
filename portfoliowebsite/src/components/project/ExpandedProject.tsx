@@ -1,18 +1,18 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { type Project } from "../../data/schemas/project.schema";
 import { useGithubCommits } from "../../hooks/useGithubCommits";
+import { assetUrl } from "../../utils/assetUrl";
+import TroubleCard from "./TroubleCard";
 
 import '../../styles/expandedProject.css';
 
 interface Props {
     project: Project;
-
-    onClose: () => void;
 }
 
 function ExpandedProject({
     project,
-    onClose,
 }: Props) {
 
     const commits = useGithubCommits(
@@ -24,13 +24,13 @@ function ExpandedProject({
 
     return (
         <section className="expanded-project">
-            <button onClick={onClose}>
-                닫기
-            </button>
+            <Link to="/projects" className="back-link">
+                ← Projects
+            </Link>
 
             <div className="project-hero">
                 <img
-                    src={project.thumbnail}
+                    src={assetUrl(project.thumbnail)}
                     alt={project.title}
                     className="project-thumbnail"
                 />
@@ -81,6 +81,16 @@ function ExpandedProject({
                                 rel="noreferrer"
                             >
                                 Demo
+                            </a>
+                        )}
+
+                        {project.figmaUrl && (
+                            <a
+                                href={project.figmaUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Figma
                             </a>
                         )}
                     </div>
@@ -167,7 +177,7 @@ function ExpandedProject({
                             {(demo.type === 'image' ||
                                 demo.type === 'gif') && (
                                     <img
-                                        src={demo.src}
+                                        src={assetUrl(demo.src)}
                                         alt={demo.title}
                                     />
                                 )}
@@ -175,7 +185,7 @@ function ExpandedProject({
                             {demo.type === 'video' && (
                                 <video
                                     controls
-                                    src={demo.src}
+                                    src={assetUrl(demo.src)}
                                 />
                             )}
 
@@ -197,32 +207,11 @@ function ExpandedProject({
 
                 <div className="trouble-list">
                     {project.troubles.map((trouble) => (
-                        <div
+                        <TroubleCard
                             key={trouble.problem}
-                            className="trouble-card"
-                        >
-                            <div>
-                                <strong>Problem</strong>
-                                <p>{trouble.problem}</p>
-                            </div>
-
-                            <div>
-                                <strong>Cause</strong>
-                                <p>{trouble.cause}</p>
-                            </div>
-
-                            <div>
-                                <strong>Solution</strong>
-                                <p>{trouble.solution}</p>
-                            </div>
-
-                            {trouble.result && (
-                                <div>
-                                    <strong>Result</strong>
-                                    <p>{trouble.result}</p>
-                                </div>
-                            )}
-                        </div>
+                            trouble={trouble}
+                            githubRepo={project.githubRepo}
+                        />
                     ))}
                 </div>
             </div>

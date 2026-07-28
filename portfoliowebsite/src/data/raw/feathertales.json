@@ -8,7 +8,7 @@
         "painPoint": "일기장은 공유가 불가능하고 SNS는 공개 범위 조절이 어려워 '내 공간에 기록하면서 친구와 연결'하는 중간 지점이 없음",
         "goal": "내 공간을 중심으로 하되 친구와 선택적으로 연결할 수 있는 아바타 기반 감정 기록 플랫폼을 구현"
     },
-    "thumbnail": "images/projects/FeatherTales/Main.webp",
+    "thumbnail": "/images/projects/FeatherTales/Main.webp",
     "period": "2025.04 ~ 2025.07",
     "teamSize": "1인",
     "role": "Frontend / Backend",
@@ -66,22 +66,22 @@
         {
             "title": "로그인 화면",
             "type": "image",
-            "src": "images/projects/FeatherTales/Login.webp"
+            "src": "/images/projects/FeatherTales/Login.webp"
         },
         {
             "title": "메인 인터랙션 화면",
             "type": "image",
-            "src": "images/projects/FeatherTales/Main.webp"
+            "src": "/images/projects/FeatherTales/Main.webp"
         },
         {
             "title": "아바타 이동 시연",
             "type": "gif",
-            "src": "images/projects/FeatherTales/Main_gif.gif"
+            "src": "/images/projects/FeatherTales/Main_gif.gif"
         },
         {
             "title": "책방 Drag & Drop",
             "type": "image",
-            "src": "images/projects/FeatherTales/Doc.webp"
+            "src": "/images/projects/FeatherTales/Doc.webp"
         }
     ],
     "troubles": [

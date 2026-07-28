@@ -1,37 +1,25 @@
-// function ProjectDetail() {
-//     return (
-//         <article className="project-card">
+import { useParams, Link } from 'react-router-dom';
 
-//             <div className="thumbnail">
-//                 THUMBNAIL
-//             </div>
+import ExpandedProject from '../../components/project/ExpandedProject';
+import { projects } from '../../data/parsers/project.parser';
 
-//             <div className="project-content">
+import '../../styles/project.css';
 
-//                 <span>
-//                     React Native
-//                 </span>
+function ProjectDetail() {
+    const { id } = useParams<{ id: string }>();
 
-//                 <h3>
-//                     TravelBUDDY
-//                 </h3>
+    const project = projects.find((p) => p.id === id);
 
-//                 <p>
-//                     여행 일정 및 협업 서비스
-//                 </p>
+    if (!project) {
+        return (
+            <div className="project-error-page">
+                <p>프로젝트를 찾을 수 없습니다.</p>
+                <Link to="/projects">← 목록으로 돌아가기</Link>
+            </div>
+        );
+    }
 
-//                 <div className="tags">
+    return <ExpandedProject project={project} />;
+}
 
-//                     <span>#Map</span>
-//                     <span>#Chat</span>
-//                     <span>#Schedule</span>
-
-//                 </div>
-
-//             </div>
-
-//         </article>
-//     );
-// }
-
-// export default ProjectDetail;
+export default ProjectDetail;

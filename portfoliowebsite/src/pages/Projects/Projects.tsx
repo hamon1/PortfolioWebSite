@@ -1,44 +1,28 @@
-import { useState } from 'react';
-
 import ProjectCard from '../../components/project/ProjectCard';
-import ExpandedProject from '../../components/project/ExpandedProject';
 
 import { projects } from '../../data/parsers/project.parser';
 
 import '../../styles/project.css';
 
 function Projects() {
-    const [selectedProjectId, setSelectedProjectId] =
-        useState<string | null>(null);
-
-    const selectedProject = projects.find(
-        (project) => project.id === selectedProjectId
-    );
-
     return (
-        <section id="projects-section" className="projects-section">
+        <section className="projects-section projects-page">
+            <div className="projects-section-header">
+                <span className="section-label">Archive</span>
+                <h1>Projects</h1>
+                <p className="projects-subtitle">진행한 프로젝트 전체 목록</p>
+            </div>
+
             <div className='project-grid-wrapper'>
                 <div className="project-grid">
                     {projects.map((project) => (
                         <ProjectCard
                             key={project.id}
                             project={project}
-                            onExpand={() =>
-                                setSelectedProjectId(project.id)
-                            }
                         />
                     ))}
                 </div>
             </div>
-
-            {selectedProject && (
-                <ExpandedProject
-                    project={selectedProject}
-                    onClose={() =>
-                        setSelectedProjectId(null)
-                    }
-                />
-            )}
         </section>
     );
 }

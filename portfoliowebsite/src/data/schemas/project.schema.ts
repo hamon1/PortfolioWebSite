@@ -53,6 +53,8 @@ export const ProjectSchema = z.object({
 
     deployUrl: z.string().url().or(z.literal("")),
 
+    figmaUrl: z.string().url().optional(),
+
     features: z.array(FeatureSchema),
 
     demos: z.array(DemoSchema),
