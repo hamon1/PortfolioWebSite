@@ -1,3 +1,7 @@
+.about-wrapper {
+    position: relative;
+}
+
 /* ── Hero Section ───────────────────────────────────── */
 .hero-section {
     padding: 100px 24px 80px;

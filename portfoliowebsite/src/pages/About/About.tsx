@@ -13,6 +13,8 @@ import {
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 
+import MouseGlow from '../../components/effects/MouseGlow';
+
 import '../../styles/hero.css';
 
 type TechItem = {
@@ -41,7 +43,9 @@ function About() {
     const level_text: string = "♦︎";
 
     return (
-        <>
+        <div className="about-wrapper">
+            <MouseGlow />
+
             <section id="hero-section" className="hero-section">
                 <span className="hero-label">Developer</span>
 
@@ -79,7 +83,7 @@ function About() {
                     ))}
                 </div>
             </section>
-        </>
+        </div>
     );
 }
 
