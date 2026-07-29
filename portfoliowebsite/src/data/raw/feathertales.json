@@ -110,18 +110,6 @@
             "lesson": "리액트 훅 안에서 sessionStorage/localStorage 같은 외부 가변 상태를 직접 읽는 것은 컴포넌트 생명주기와 얽히며 버그의 원인이 되기 쉽다. '호출부에서 값을 읽어 파라미터로 넘긴다'는 방식은 흔히 권장되는 해법(의존성 명시적 주입)과 일치하지만, 이 결론까지 다섯 번의 커밋이 필요했다 — 상태 관리 전략을 초기에 정하고 문서화했다면 반복을 줄일 수 있었을 것이다."
         },
         {
-            "problem": "빌드 오류를 근본 원인 대신 || true로 무마해 빌드 실패가 배포 파이프라인에 감지되지 않음",
-            "cause": "useDocumentQuery를 import하는 코드가 이미 있었지만 실제 파일이 없어 react-scripts build가 모듈을 찾지 못해 실패 — 이를 임시로 넘기기 위해 package.json build 스크립트에 || true를 붙여 종료 코드를 강제로 0(성공)으로 덮어씀",
-            "solution": "미해결 — 빈 스텁 파일(useDocumentQuery.js, 0바이트)로 import 에러만 임시 해소하고, build 스크립트의 || true는 그대로 방치됨",
-            "result": "현재 HEAD에도 \"build\": \"react-scripts build || true\"가 남아있어, 빌드가 실패해도 npm run build 자체는 성공(exit 0)으로 끝남 — 배포 자동화가 이 스크립트의 성공 여부로 배포를 판단한다면 빌드가 깨졌는데도 배포가 진행될 위험이 있음",
-            "status": "unresolved",
-            "date": "2024-11-25",
-            "commitHash": "a5ea319",
-            "codeSnippet": "- \"build\": \"react-scripts build\",\n+ \"build\": \"react-scripts build || true\",",
-            "caveat": "package.json의 build 스크립트에 여전히 || true가 남아있어, 배포 파이프라인이 npm run build의 종료 코드로 성공 여부를 판단한다면 실제로는 빌드가 깨졌는데도 배포가 계속 진행될 수 있다. 우선적으로 점검·제거가 필요",
-            "lesson": "빌드 경고/에러를 없애는 가장 빠른 방법은 종종 근본 원인 대신 '실패 신호 자체를 지우는' 것이지만, 이는 문제를 숨길 뿐 해결하지 않는다. CI 스크립트에 || true, --force류 플래그를 습관적으로 붙이는 것은 이후 진짜 빌드 실패를 놓치게 만드는 위험한 패턴이다."
-        },
-        {
             "problem": "문서 저장 시 생성/수정 조건이 반전되어 있었고, 카테고리 클릭 시 목록이 필터링되지 않음",
             "cause": "Docview.js가 !docId를 '수정', else를 '생성'으로 반대로 분기해 편집할 때마다 중복 문서가 쌓임. Library.js는 getDocsFromCategory() 결과를 console.log만 하고 화면 상태(docs)에는 반영하지 않음",
             "solution": "docId 유무 대신 명시적 isEditing 상태로 분기하도록 변경. filteredDocs/isFetchingDocs/fetchError 상태를 추가해 카테고리 선택 결과를 실제로 setFilteredDocs에 반영하도록 완성",

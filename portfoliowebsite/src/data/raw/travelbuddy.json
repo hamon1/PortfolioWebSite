@@ -120,17 +120,6 @@
             "lesson": "리스트 렌더링 함수 내부에서 item과 상위 스코프 변수명이 비슷할 때 흔히 발생하는 실수 — 구조분해 시 변수명을 명확히 다르게 가져가면 예방할 수 있다."
         },
         {
-            "problem": "뒤로가기(스택 pop 추정) 시 크래시",
-            "cause": "정확한 원인 미특정 — NavigationContainer 없이 커스텀 TabNavigatior를 직접 렌더링하는 구조가 스택 pop 시 상태 불일치를 유발했을 가능성",
-            "solution": "App.js를 NavigationContainer → RootStack으로 감싸는 정석 구조로 재작성하고, 미완성 실험 코드를 삭제",
-            "result": "이후 커밋에서 동일 크래시 재발 없음(원인 자체가 검증된 것은 아님)",
-            "status": "resolved",
-            "date": "2024-05-02",
-            "commitHash": "1bd2147",
-            "caveat": "커밋 메시지에 '아마도', '모르게'라는 표현이 남아있을 만큼 작성자도 정확한 원인을 특정하지 못한 채 구조 개편으로 우회한 케이스",
-            "lesson": "구조 개편으로 증상이 사라진 경우, 문제가 실제로 해결됐는지 우연히 회피된 것인지 커밋 메시지만으로는 구분되지 않는다. 원인을 알 수 없더라도 무엇을 시도했는지 기록해두면 재발 시 디버깅 시간이 줄어든다."
-        },
-        {
             "problem": "회원가입 화면에서 로그인 화면 전환 시 존재하지 않는 라우트 이름을 참조",
             "cause": "네비게이터에 등록된 화면 이름은 'Login'인데 호출부에서 navigation.push('SignIn', ...)으로 다른 문자열을 사용",
             "solution": "호출부의 라우트 이름을 실제 등록된 이름 'Login'으로 수정",
@@ -160,18 +149,6 @@
             "date": "2024-06-29",
             "commitHash": "23246c3",
             "lesson": "자동 생성되는 lock 파일(Podfile.lock, yarn.lock 등)은 팀원 간 툴 버전이 다르면 쉽게 충돌하며, 이 경우 부분 병합보다 삭제 후 재설치가 더 실용적인 경우가 많다."
-        },
-        {
-            "problem": "PlanStack.js에 유령(dangling) 컴포넌트 참조가 남아있음",
-            "cause": "리팩터링 시 import 구문은 주석 처리했지만 같은 파일의 <Stack.Screen component={...}> JSX 참조는 그대로 남겨, 정의부 제거와 사용부 제거가 한 커밋 안에서 함께 처리되지 않음",
-            "solution": "미해결 — RootStack.js의 평면적 화면 등록 방식이 실제로 쓰이고 있어 PlanStack.js가 직접 마운트되지 않는 한 크래시로 드러나지 않는 상태로 방치됨",
-            "result": "현재 코드베이스에도 동일 구조로 남아있음",
-            "status": "unresolved",
-            "date": "2024-09-11",
-            "commitHash": "d2fc702",
-            "codeSnippet": "// import PlanOherScreen from '../Plans/screens/PlanOtherScreen'; // 주석 처리됨\n<Stack.Screen name=\"PlanOtherScreen\" component={PlanOherScreen} /> // 여전히 참조 중",
-            "caveat": "PlanStack.js가 다시 사용되거나 다른 개발자가 참고해 복사하면 ReferenceError: PlanOherScreen is not defined로 즉시 크래시가 발생한다. 파일을 삭제하거나 주석 처리된 import를 실제 경로에 맞게 복구해야 함",
-            "lesson": "리팩터링 시 '정의부 제거'와 '사용부 제거'를 한 커밋 안에서 함께 처리하지 않으면, 겉보기엔 안전해 보여도 재사용 시 즉시 크래시로 이어지는 유령 참조가 남는다."
         }
     ],
     "domainInsights": [
