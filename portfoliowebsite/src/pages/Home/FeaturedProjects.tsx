@@ -5,7 +5,7 @@ import { projects } from '../../data/parsers/project.parser';
 import '../../styles/project.css';
 import '../../styles/projectTimeline.css';
 
-const FEATURED_COUNT = 4;
+const FEATURED_COUNT = 5;
 
 // 'desc' = 최신 프로젝트가 위로, 'asc' = 오래된 프로젝트가 위로
 const SORT_DIRECTION: 'asc' | 'desc' = 'desc';
