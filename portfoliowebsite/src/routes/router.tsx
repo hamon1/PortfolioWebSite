@@ -9,7 +9,6 @@ import Commission from '../pages/Commission/Commission';
 import Blog from '../pages/Blog/Blog';
 import BlogPost from '../pages/Blog/BlogPost';
 import AdminWrite from '../pages/Admin/AdminWrite';
-import Projects from '../pages/Projects/Projects';
 import ProjectDetail from '../pages/Projects/ProjectDetail';
 
 const router = createBrowserRouter([
@@ -41,10 +40,6 @@ const router = createBrowserRouter([
         path: '/projects',
         element: <MainLayout />,
         children: [
-            {
-                index: true,
-                element: <Projects />,
-            },
             {
                 path: ':id',
                 element: <ProjectDetail />,

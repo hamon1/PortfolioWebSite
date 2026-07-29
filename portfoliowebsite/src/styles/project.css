@@ -2,11 +2,6 @@
     padding: 64px 0;
 }
 
-.projects-page {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
 .projects-section-header {
     padding: 0 24px;
     margin-bottom: 32px;
@@ -15,16 +10,6 @@
 .projects-section-header h1,
 .projects-section-header h2 {
     margin: 6px 0 0;
-}
-
-.projects-subtitle {
-    color: var(--text-muted);
-    margin-top: 8px;
-}
-
-.projects-section-footer {
-    padding: 0 24px;
-    margin-top: 28px;
 }
 
 .project-error-page {
@@ -38,26 +23,4 @@
 
 .project-error-page p {
     color: var(--text-muted);
-}
-
-.project-grid-wrapper {
-    overflow-x: auto;
-    overflow-y: hidden;
-    width: 100%;
-    padding: 0 24px;
-    scrollbar-width: none;
-}
-
-.project-grid-wrapper::-webkit-scrollbar {
-    display: none;
-}
-
-.project-grid {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    width: max-content;
-    padding-bottom: 12px;
-
-    scroll-snap-type: x mandatory;
 }

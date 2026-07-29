@@ -1,14 +1,26 @@
-import { Link } from 'react-router-dom';
-
-import ProjectCard from '../../components/project/ProjectCard';
+import ProjectTimelineItem from '../../components/project/ProjectTimelineItem';
+import { type Project } from '../../data/schemas/project.schema';
 import { projects } from '../../data/parsers/project.parser';
 
 import '../../styles/project.css';
+import '../../styles/projectTimeline.css';
 
-const FEATURED_COUNT = 3;
+const FEATURED_COUNT = 4;
+
+// 'desc' = 최신 프로젝트가 위로, 'asc' = 오래된 프로젝트가 위로
+const SORT_DIRECTION: 'asc' | 'desc' = 'desc';
+
+function getPeriodStart(project: Project): string {
+    return project.period.split('~')[0].trim();
+}
 
 function FeaturedProjects() {
-    const featured = projects.slice(0, FEATURED_COUNT);
+    const sorted = [...projects].sort((a, b) => {
+        const diff = getPeriodStart(a).localeCompare(getPeriodStart(b));
+        return SORT_DIRECTION === 'asc' ? diff : -diff;
+    });
+
+    const featured = sorted.slice(0, FEATURED_COUNT);
 
     return (
         <section id="projects-section" className="projects-section">
@@ -17,21 +29,15 @@ function FeaturedProjects() {
                 <h2>Projects</h2>
             </div>
 
-            <div className='project-grid-wrapper'>
-                <div className="project-grid">
-                    {featured.map((project) => (
-                        <ProjectCard
-                            key={project.id}
-                            project={project}
-                        />
-                    ))}
-                </div>
-            </div>
-
-            <div className="projects-section-footer">
-                <Link to="/projects" className="btn-outline">
-                    전체 프로젝트 보기 →
-                </Link>
+            <div className="timeline-list">
+                {featured.map((project, index) => (
+                    <ProjectTimelineItem
+                        key={project.id}
+                        project={project}
+                        periodStart={getPeriodStart(project)}
+                        isLast={index === featured.length - 1}
+                    />
+                ))}
             </div>
         </section>
     );

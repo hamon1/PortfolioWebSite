@@ -14,7 +14,7 @@ function ProjectDetail() {
         return (
             <div className="project-error-page">
                 <p>프로젝트를 찾을 수 없습니다.</p>
-                <Link to="/projects">← 목록으로 돌아가기</Link>
+                <Link to="/">← 홈으로 돌아가기</Link>
             </div>
         );
     }

@@ -31,8 +31,8 @@ function ExpandedProject({
 
     return (
         <section className="expanded-project">
-            <Link to="/projects" className="back-link">
-                ← Projects
+            <Link to="/" className="back-link">
+                ← Home
             </Link>
 
             <div className="project-hero">

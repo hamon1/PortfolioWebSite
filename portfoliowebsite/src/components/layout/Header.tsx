@@ -55,9 +55,6 @@ function Header() {
                         <button onClick={() => scrollTo('hero-section')}>About</button>
                     </li>
                     <li>
-                        <Link to="/projects" onClick={() => setIsMenuOpen(false)}>Projects</Link>
-                    </li>
-                    <li>
                         <Link to="/commission" onClick={() => setIsMenuOpen(false)}>Commission</Link>
                     </li>
                     <li>
