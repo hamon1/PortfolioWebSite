@@ -22,12 +22,14 @@ function ExpandedProject({
     const [showAllCommits, setShowAllCommits] =
     useState(false);
 
-    const sortedTroubles = [...project.troubles].sort((a, b) => {
-        if (!a.date && !b.date) return 0;
-        if (!a.date) return 1;
-        if (!b.date) return -1;
-        return a.date.localeCompare(b.date);
-    });
+    const sortedTroubles = project.troubles
+        .filter((trouble) => trouble.status !== 'unresolved')
+        .sort((a, b) => {
+            if (!a.date && !b.date) return 0;
+            if (!a.date) return 1;
+            if (!b.date) return -1;
+            return a.date.localeCompare(b.date);
+        });
 
     return (
         <section className="expanded-project">
@@ -219,19 +221,21 @@ function ExpandedProject({
             </div>
 
             {/* Trouble Shooting */}
-            <div className="project-block">
-                <h3>Trouble Shooting</h3>
+            {sortedTroubles.length > 0 && (
+                <div className="project-block">
+                    <h3>Trouble Shooting</h3>
 
-                <div className="trouble-list">
-                    {sortedTroubles.map((trouble) => (
-                        <TroubleCard
-                            key={trouble.problem}
-                            trouble={trouble}
-                            githubRepo={project.githubRepo}
-                        />
-                    ))}
+                    <div className="trouble-list">
+                        {sortedTroubles.map((trouble) => (
+                            <TroubleCard
+                                key={trouble.problem}
+                                trouble={trouble}
+                                githubRepo={project.githubRepo}
+                            />
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
 
             {/* DevLog */}
             <div className="project-block">

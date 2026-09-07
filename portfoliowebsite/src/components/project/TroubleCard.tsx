@@ -70,20 +70,6 @@ function TroubleCard({ trouble, githubRepo }: Props) {
                     <p>{trouble.result}</p>
                 </div>
             )}
-
-            {trouble.lesson && (
-                <div className="trouble-callout trouble-callout--lesson">
-                    <strong>교훈</strong>
-                    <p>{trouble.lesson}</p>
-                </div>
-            )}
-
-            {trouble.caveat && (
-                <div className="trouble-callout trouble-callout--caveat">
-                    <strong>잔존 이슈</strong>
-                    <p>{trouble.caveat}</p>
-                </div>
-            )}
         </div>
     );
 }
