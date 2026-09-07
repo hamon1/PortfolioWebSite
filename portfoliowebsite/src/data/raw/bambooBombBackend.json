@@ -8,9 +8,9 @@
         "painPoint": "기존 익명 게시판은 글이 영구적으로 남아, 시간이 지나도 검색되거나 추적될 수 있다는 부담이 있음",
         "goal": "일정 시간 뒤 자동으로 사라지는 익명 게시글 백엔드를 네이버 소셜 로그인과 자체 JWT 인증 기반으로 구현"
     },
-    "thumbnail": "/images/projects/BambooBomb/thumb.webp",
-    "period": "2025.01 ~ 2025.03",
-    "teamSize": "1인",
+    "thumbnail": "/images/projects/BambooBomb/icon.webp",
+    "period": "2024.11 ~ 2025.02",
+    "teamSize": "2인",
     "role": "Backend",
     "techStack": [
         {
@@ -65,6 +65,12 @@
             "title": "Swagger UI 문서화",
             "description": "springdoc-openapi 기반 API 문서 자동 생성",
             "intent": "REST API 명세를 코드와 별도로 관리하지 않고 항상 최신 상태로 노출하기 위해",
+            "priority": "extension"
+        },
+        {
+            "title": "Dockerfile 기반 배포 구성",
+            "description": "${PORT} 환경 변수 기반 동적 포트 바인딩과 사전 빌드된 JAR 복사 방식의 Dockerfile로 배포 가능한 실행 구조를 마련",
+            "intent": "빌드와 실행 환경을 이미지에 고정해 로컬과 배포 서버 간 차이를 줄이고 재현 가능한 배포를 확보하기 위해",
             "priority": "extension"
         }
     ],
@@ -153,8 +159,8 @@
         }
     ],
     "validation": {
-        "deployed": false,
-        "learnings": "TTL 이중 계산과 배포 파이프라인 재현 불가 문제를 먼저 해결해야 실제 운영이 가능한 상태"
+        "deployed": true,
+        "learnings": "Render에 배포해 인증·게시글 API를 동작시켰으나, TTL 이중 계산과 배포 파이프라인 재현성 개선이 남은 과제"
     },
     "retrospective": "Spring Security 필터 체인, OAuth2 클라이언트 등록, MongoDB TTL 인덱스 등 Spring Boot의 프레임워크 표준 패턴을 처음부터 끝까지 구성해본 경험을 쌓았으나, 인증(authentication)과 인가(authorization)를 구분해서 설계해야 한다는 것을 뒤늦게 확인함",
     "featured": true

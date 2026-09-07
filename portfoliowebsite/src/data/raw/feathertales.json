@@ -9,9 +9,9 @@
         "goal": "내 공간을 중심으로 하되 친구와 선택적으로 연결할 수 있는 아바타 기반 감정 기록 플랫폼을 구현"
     },
     "thumbnail": "/images/projects/FeatherTales/Main.webp",
-    "period": "2025.04 ~ 2025.07",
+    "period": "2024.12 ~ 2025.02",
     "teamSize": "1인",
-    "role": "Frontend / Backend",
+    "role": "풀스택",
     "techStack": [
         {
             "name": "React",
@@ -30,8 +30,8 @@
             "reason": "REST API를 최소한의 설정으로 빠르게 구축할 수 있어 프로토타이핑 속도를 확보하기 위해"
         },
         {
-            "name": "JavaScript",
-            "reason": "프론트와 백엔드 언어 통일"
+            "name": "JWT",
+            "reason": "auth·documents·friends·room·calendar 등 여러 도메인 API에서 공통 인증 미들웨어로 Bearer 토큰을 검증해 stateless하게 인증을 관리하기 위해"
         }
     ],
     "githubUrl": "https://github.com/hamon1/FeatherTales",

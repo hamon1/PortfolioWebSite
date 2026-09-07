@@ -2,16 +2,16 @@
     "id": "travelbuddy",
     "title": "TravelBUDDY",
     "githubRepo": "hamon1/TRAVEL",
-    "shortDescription": "여행 계획 협업 앱",
+    "shortDescription": "여행 계획·공유 iOS 협업 앱",
     "problemStatement": {
         "background": "여행 계획을 여러 명이 함께 세울 때 카카오톡 채팅과 스프레드시트를 번갈아 쓰는 방식이 반복됨",
         "painPoint": "일정이 업데이트될 때마다 전체 공유가 필요해 버전 불일치와 혼선이 잦음",
         "goal": "참여자 전원이 같은 화면에서 동시에 일정을 조율할 수 있는 단일 협업 공간을 만들 것"
     },
     "thumbnail": "/images/projects/TravelBUDDY/Main.webp",
-    "period": "2024.04 ~ 2024.11",
+    "period": "2024.05 ~ 2024.11",
     "teamSize": "2인",
-    "role": "e2e",
+    "role": "팀장 · 기획/디자인/개발",
     "techStack": [
         {
             "name": "React-Native",
@@ -22,16 +22,20 @@
             "reason": "2인 협업에서 타입 불일치로 인한 런타임 오류를 컴파일 타임에 잡아내기 위해"
         },
         {
-            "name": "Zustand",
-            "reason": "여러 컴포넌트가 동일한 일정 상태를 참조해야 해서 전역 상태 관리가 필요"
-        },
-        {
             "name": "Firebase",
             "reason": "실시간 DB 동기화와 인증을 직접 구축하지 않고 검증된 인프라를 활용하기 위해"
+        },
+        {
+            "name": "Google Places API",
+            "reason": "장소 검색과 여행 계획 화면에서 실제 장소 데이터(자동완성·상세 정보)를 제공하기 위해"
+        },
+        {
+            "name": "Context API",
+            "reason": "여러 컴포넌트가 동일한 사용자·검색 상태를 참조해야 해, 별도 라이브러리 없이 UserContext·SearchContext로 전역 상태를 관리하고 불필요한 props 전달을 줄이기 위해"
         }
     ],
-    "githubUrl": "https://github.com/example/travelbuddy",
-    "deployUrl": "https://travelbuddy.vercel.app",
+    "githubUrl": "https://github.com/hamon1/TRAVEL",
+    "deployUrl": "",
     "features": [
         {
             "title": "실시간 일정 공유",
