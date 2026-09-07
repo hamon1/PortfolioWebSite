@@ -6,9 +6,6 @@ import MainLayout from '../layouts/MainLayout';
 
 import Home from '../pages/Home/Home';
 import Commission from '../pages/Commission/Commission';
-import Blog from '../pages/Blog/Blog';
-import BlogPost from '../pages/Blog/BlogPost';
-import AdminWrite from '../pages/Admin/AdminWrite';
 import ProjectDetail from '../pages/Projects/ProjectDetail';
 
 const router = createBrowserRouter([
@@ -23,20 +20,6 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: '/blog',
-        element: <MainLayout />,
-        children: [
-            {
-                index: true,
-                element: <Blog />,
-            },
-            {
-                path: ':slug',
-                element: <BlogPost />,
-            },
-        ],
-    },
-    {
         path: '/projects',
         element: <MainLayout />,
         children: [
@@ -45,10 +28,6 @@ const router = createBrowserRouter([
                 element: <ProjectDetail />,
             },
         ],
-    },
-    {
-        path: '/compose',
-        element: <AdminWrite />,
     },
     {
         path: '/commission',

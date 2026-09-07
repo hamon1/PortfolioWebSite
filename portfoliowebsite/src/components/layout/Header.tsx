@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../../styles/header.css';
 
 function Header() {
@@ -54,12 +54,9 @@ function Header() {
                     <li>
                         <button onClick={() => scrollTo('hero-section')}>About</button>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/commission" onClick={() => setIsMenuOpen(false)}>Commission</Link>
-                    </li>
-                    <li>
-                        <Link to="/blog" onClick={() => setIsMenuOpen(false)}>Blog</Link>
-                    </li>
+                    </li> */}
                     <li>
                         <button onClick={() => scrollTo('contact-section')}>Contact</button>
                     </li>
